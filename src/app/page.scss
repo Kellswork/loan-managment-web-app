@@ -1,0 +1,207 @@
+.login-intro-text {
+  font-family: "Avenir next", sans-serif;
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+
+  h1 {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 32px;
+    letter-spacing: -2.4%;
+    color: rgba(33, 63, 125, 1);
+  }
+
+  p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 27px;
+    color: rgba(84, 95, 125, 1);
+  }
+}
+
+.form-field {
+  position: relative;
+  display: flex;
+
+
+  input {
+    width: 100%;
+    padding: 0 16px;
+    height: 50px;
+    border: 2px solid rgba(84, 95, 125, 0.15);
+    background: transparent;
+    border-radius: 5px;
+    outline: none;
+    color: #1d1b20;
+    font-size: 1em;
+  }
+
+  label {
+    font-size: 14px;
+    position: absolute;
+    left: 0;
+    padding: 20px 16px;
+    pointer-events: none;
+    color: rgba(84, 95, 125, 1);
+    opacity: 0.6;
+    transition: 0.5s;
+    box-shadow: 0px 15px 90px 0px rgba(0, 0, 0, 0.03);
+  }
+
+  input:valid, input:focus {
+    border: 2px solid rgba(57, 205, 204, 1);
+  }
+
+  input:valid ~ label,
+  input:focus ~ label {
+    color: rgba(57, 205, 204, 1);
+    transform: translateX(10px) translateY(-4px);
+    font-size: 10px;
+    padding: 0 2px;
+    opacity: 1;
+    background: white;
+    font-weight: 600;
+  }
+
+  
+
+  #toggle {
+    font-size: 12px;
+    font-weight: 600;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 20px;
+    cursor: pointer;
+    color: rgba(57, 205, 204, 1);
+  }
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 2rem;
+  p {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16.39px;
+    letter-spacing: 10%;
+    color: rgba(57, 205, 204, 1);
+    letter-spacing: 0.1em;
+  }
+}
+
+.form-button {
+  height: 48px;
+  background: rgba(57, 205, 204, 1);
+  width: 100%;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0px 15px 90px 0px rgba(0, 0, 0, 0.03);
+  text-transform: uppercase;
+  font-size: 14px;
+  line-height: 19.12px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 1);
+  letter-spacing: 0.1em;
+}
+
+.form-button:disabled {
+  background: rgba(190, 226, 227, 0.5);
+}
+
+.main-container {
+  font-family: "Avenir next", sans-serif;
+  background: rgba(255, 255, 255, 1);
+  width: 80%;
+  margin: 0 auto;
+  nav {
+    margin-top: 2rem;
+  }
+}
+
+.login-form-container {
+  margin-top: 10rem;
+}
+
+.login-container-image {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .main-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    nav {
+      position: absolute;
+      top: 109px;
+      left: 97px;
+    }
+  }
+  .login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    nav {
+      display: block;
+    }
+  }
+
+  .login-container-image {
+    display: flex;
+    width: 60%;
+  }
+
+  .login-form-container {
+    margin-top: 0rem;
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0px 15px 90px 0px rgba(0, 0, 0, 0.03);
+    padding: 0 2rem;
+
+    .login-intro-text h1 {
+      font-size: 40px;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .login-intro-text p {
+    font-size: 20px;
+  }
+
+  .login-form-container {
+    height: 100%;
+    width: 50%;
+    .login-intro-text h1 {
+      font-size: 55px;
+      line-height: 54.64px;
+    }
+  }
+
+  .login-container-image {
+    display: flex;
+    width: 50%;
+    img {
+      max-width: 600px;
+      width: 100%;
+      margin: 0 auto;
+    }
+  }
+
+  .login-container-spacing {
+    max-width: 447px;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
