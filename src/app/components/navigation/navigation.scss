@@ -1,0 +1,38 @@
+.nav-container {
+  background-color: white;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  height: 100px;
+  margin: 0 30px;
+}
+
+.nav-links {
+  font-family: "Roboto", sans-serif;
+  color: rgba(33, 63, 125, 1);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  p {
+    text-decoration: underline;
+    font-size: 1rem;
+    font-weight: 400px;
+  }
+
+  .avatar {
+    border-radius: 100%;
+  }
+
+  .username {
+    display: flex;
+    align-items: center;
+    font-family: "Work Sans", sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+
+
+    img {
+     color: rgba(33, 63, 125, 1);
+    }
+  }
+}
