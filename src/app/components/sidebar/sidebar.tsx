@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { sidebarData } from "../../utils/data";
+import { sidebarData } from "../../../utils/data";
 import "./sidebar.scss"
 import Link from "next/link";
 
@@ -13,10 +13,9 @@ const TextIcon = ({
   text: string;
   icon: string;
   alt: string;
-  classname: string;
+  classname?: string;
 }) => (
-  
-  <Link href={"/"} className={`sidebar-text-icon ${classname}`}>
+  <Link href={"/"} className={`sidebar-text-icon ${classname || ''}`}>
     <Image
       className="sidebar-icon"
       src={`/sidebar/${icon}`}
