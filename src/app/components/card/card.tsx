@@ -53,83 +53,85 @@ export const Card = () => (
 );
 
 export const FilterCard = () => (
-  <div>
-    <div>
-      <label htmlFor="organization">
-        Organization
-        <select name="" id="">
-          <option value="">select</option>
-        </select>
-      </label>
-      <label htmlFor="username">
-        Username
-        <input type="text" name="" id="" />
-      </label>
-      <label htmlFor="email">
-        Email
-        <input type="text" name="" id="" />
-      </label>
-      <label htmlFor="date">
-        Date
-        <input type="date" name="" id="" />
-      </label>
-      <label htmlFor="email">
-        Phone Number
-        <input type="text" name="" id="" />
-      </label>
-      <label htmlFor="Status">
-        Status
-        <select name="" id="">
-          <option value="">select</option>
-          <option value="inactive">Inactive</option>
-          <option value="pending">Pending</option>
-          <option value="active">Active</option>
-          <option value="blacklisted">Blacklisted</option>
-        </select>
-      </label>
-    </div>
-    <div>
-      <button>Reset</button>
-      <button>Filter</button>
-    </div>
+  <div className="filter-card-container">
+    <form className="flex-container">
+      <div className="form-fields">
+        <div className="form-field-item">
+          <label htmlFor="organization">Organization</label>
+          <select name="" id="">
+            <option value="">Select</option>
+          </select>
+        </div>
+        <div className="form-field-item">
+          <label htmlFor="username">Username</label>
+          <input placeholder="User" type="text" name="" id="" />
+        </div>
+        <div className="form-field-item">
+          <label htmlFor="email">Email</label>
+          <input placeholder="Email" type="text" name="" id="" />
+        </div>
+        <div className="form-field-item">
+          <label htmlFor="date">Date</label>
+          <input placeholder="Date" type="date" name="" id="" />
+        </div>
+        <div className="form-field-item">
+          <label htmlFor="phone number">Phone Number </label>
+          <input placeholder="Phone Number" type="text" name="" id="" />
+        </div>
+        <div className="form-field-item">
+          <label htmlFor="Status">Status </label>
+          <select name="" id="">
+            <option value="">Select</option>
+            <option value="inactive">Inactive</option>
+            <option value="pending">Pending</option>
+            <option value="active">Active</option>
+            <option value="blacklisted">Blacklisted</option>
+          </select>
+        </div>
+      </div>
+      <div className="form-field-btn-group">
+        <button className="btn outline">Reset</button>
+        <button className="btn filled">Filter</button>
+      </div>
+    </form>
   </div>
 );
 
 export const StatusCard = () => (
   <div className={`status-card`}>
-    <Link href="/" >
-    <Image
-      className=" "
-      src="/view.svg"
-      alt= ""
-      width={16}
-      height={16}
-      priority
-    />
-    <span>View Details</span>
-  </Link>
+    <Link href="/">
+      <Image
+        className=" "
+        src="/view.svg"
+        alt=""
+        width={16}
+        height={16}
+        priority
+      />
+      <span>View Details</span>
+    </Link>
 
-  <Link href="/" className={`status-card`}>
-    <Image
-      className=" "
-      src="/delete-friend.svg"
-      alt= ""
-      width={16}
-      height={16}
-      priority
-    />
-    <span>Blacklist User</span>
-  </Link>
-  <Link href="/" className={`status-card`}>
-    <Image
-      className=" "
-      src="/reactivate-user.svg"
-      alt= ""
-      width={16}
-      height={16}
-      priority
-    />
-    <span>Activate User</span>
-  </Link>
+    <Link href="/" className={`status-card`}>
+      <Image
+        className=" "
+        src="/delete-friend.svg"
+        alt=""
+        width={16}
+        height={16}
+        priority
+      />
+      <span>Blacklist User</span>
+    </Link>
+    <Link href="/" className={`status-card`}>
+      <Image
+        className=" "
+        src="/reactivate-user.svg"
+        alt=""
+        width={16}
+        height={16}
+        priority
+      />
+      <span>Activate User</span>
+    </Link>
   </div>
 );
