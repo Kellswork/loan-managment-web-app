@@ -1,0 +1,48 @@
+.nav-container {
+  background-color: white;
+  display: grid;
+  grid-template-columns: 0.76fr 2fr;
+  align-items: center;
+  height: 100px;
+  margin: 0 30px;
+}
+
+.search-links-container {
+  display: flex;
+  width: 100%;
+  max-width: 1037px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-links {
+  font-family: "Roboto", sans-serif;
+  color: rgba(33, 63, 125, 1);
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 3rem;
+  width: 40%;
+
+  p {
+    text-decoration: underline;
+    font-size: 1rem;
+    font-weight: 400px;
+  }
+
+  .avatar {
+    border-radius: 100%;
+  }
+
+  .username {
+    display: flex;
+    align-items: center;
+    font-family: "Work Sans", sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+
+    img {
+      color: rgba(33, 63, 125, 1);
+    }
+  }
+}

@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+.dashboard-container {
+  font-family: "Work Sans", sans-serif;
+
+  background: rgba(251, 251, 251, 1);
+  display: flex;
+  height: 100%;
+  font-family: "Work Sans";
+
+  main {
+  flex-grow: 1;
+  background: rgba(251, 251, 251, 1);
+  margin: 0 24px;
+  }
+
+  .card-table-layout {
+    margin: 0 auto;
+    max-width: 1037px;
+    margin-top: 60px;
+
+    h2 {
+      font-size: 24px;
+      line-height: 28.15px;
+      color: rgba(33, 63, 125, 1);
+    }
+  }
+}
