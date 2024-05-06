@@ -52,8 +52,11 @@ export const Card = () => (
   </div>
 );
 
-export const FilterCard = () => (
-  <div className="filter-card-container">
+export const FilterCard = ({ top, left }: { top: number; left: number }) => (
+  <div
+    className="filter-card-container"
+    style={{ top: `${top}px`, left: `${left}px` }}
+  >
     <form className="flex-container">
       <div className="form-fields">
         <div className="form-field-item">
@@ -97,41 +100,34 @@ export const FilterCard = () => (
   </div>
 );
 
-export const StatusCard = () => (
-  <div className={`status-card`}>
-    <Link href="/">
-      <Image
-        className=" "
-        src="/view.svg"
-        alt=""
-        width={16}
-        height={16}
-        priority
-      />
-      <span>View Details</span>
-    </Link>
+export const StatusCard = ({ top, left }: { top: number; left: number }) => (
+  <div className="status-card-container" style={{ top: `${top}px`, left: `${left}px` }}>
+    <div className="items">
+      <Link href="#">
+        <Image src="/view.svg" alt="" width={16} height={16} priority />
+        <span>View Details</span>
+      </Link>
 
-    <Link href="/" className={`status-card`}>
-      <Image
-        className=" "
-        src="/delete-friend.svg"
-        alt=""
-        width={16}
-        height={16}
-        priority
-      />
-      <span>Blacklist User</span>
-    </Link>
-    <Link href="/" className={`status-card`}>
-      <Image
-        className=" "
-        src="/reactivate-user.svg"
-        alt=""
-        width={16}
-        height={16}
-        priority
-      />
-      <span>Activate User</span>
-    </Link>
+      <Link href="#">
+        <Image
+          src="/delete-friend.svg"
+          alt=""
+          width={16}
+          height={16}
+          priority
+        />
+        <span>Blacklist User</span>
+      </Link>
+      <Link href="#">
+        <Image
+          src="/reactivate-user.svg"
+          alt=""
+          width={16}
+          height={16}
+          priority
+        />
+        <span>Activate User</span>
+      </Link>
+    </div>
   </div>
 );
