@@ -1,5 +1,5 @@
 import React from "react";
-import Card from "../components/card/card";
+import {Card} from "../components/card/card";
 import Table from "../components/table/table";
 import Pagination from "../components/pagination/pagination";
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { tableData } from "../../utils/data";
+import { tableData } from "../../../utils/data";
 import Image from "next/image";
 import "./table.scss";
 
