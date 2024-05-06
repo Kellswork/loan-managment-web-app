@@ -2,8 +2,10 @@
 
 .table-container {
   background-color: white;
+  padding:  0 24px;
 
   .resp-table {
+    width: 100%;
     margin: 0 auto;
     border-radius: 5px;
   }
@@ -28,8 +30,7 @@
   }
 
   tbody tr td {
-    padding: 20px 30px 20px 0px;
-
+    padding:25px 20px 25px 0px;
     color: rgba(84, 95, 125, 1);
     font-size: 14px;
     font-weight: 400;

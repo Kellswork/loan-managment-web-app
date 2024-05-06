@@ -11,6 +11,7 @@
   main {
   flex-grow: 1;
   background: rgba(251, 251, 251, 1);
+  margin: 0 24px;
   }
 
   .card-table-layout {
@@ -21,6 +22,7 @@
     h2 {
       font-size: 24px;
       line-height: 28.15px;
+      color: rgba(33, 63, 125, 1);
     }
   }
 }

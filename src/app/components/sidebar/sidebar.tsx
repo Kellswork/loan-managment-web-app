@@ -2,17 +2,21 @@ import React from "react";
 import Image from "next/image";
 import { sidebarData } from "../../utils/data";
 import "./sidebar.scss"
+import Link from "next/link";
 
 const TextIcon = ({
   text,
   icon,
   alt,
+  classname
 }: {
   text: string;
   icon: string;
   alt: string;
+  classname: string;
 }) => (
-  <div className="sidebar-text-icon">
+  
+  <Link href={"/"} className={`sidebar-text-icon ${classname}`}>
     <Image
       className="sidebar-icon"
       src={`/sidebar/${icon}`}
@@ -22,7 +26,7 @@ const TextIcon = ({
       priority
     />
     <span>{text}</span>
-  </div>
+  </Link>
 );
 
 const Sidebar = () => {
@@ -48,7 +52,7 @@ const Sidebar = () => {
         />
         
       </div>
-      <TextIcon text="dashboard" icon="home.svg" alt="dashboard icon" />
+      <TextIcon classname="active" text="dashboard" icon="home.svg" alt="dashboard icon" />
 
       {sidebarData.map((data) => (
         <div key={data.title} className="sidebar-nav-links">
