@@ -2,7 +2,7 @@
 
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import "./page.scss";
 import Logo from "./components/logo";
@@ -12,7 +12,7 @@ export default function Home() {
   const [emailValid, setEmailValid] = useState<boolean>(true);
   const [passwordValid, setPasswordValid] = useState<boolean>(true);
   const [showPassword, setShowPassword] = useState<boolean>(false);
-  const [isLoading, setLoading] = useState<boolean>(false)
+  const [isLoading, setLoading] = useState<boolean>(false);
   const [errMsg, setErrorMsg] = useState({ email: "", password: "" });
   const [loginDetails, setLoginDetails] = useState({
     email: "",
@@ -47,18 +47,25 @@ export default function Home() {
     });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
     setLoading(true);
     if (!emailValid || !passwordValid) return;
 
-    const user = JSON.stringify(loginDetails)
-    localStorage.setItem("user",user)
+    const user = JSON.stringify(loginDetails);
+    localStorage.setItem("user", user);
 
     setTimeout(() => {
       setLoading(false);
-      console.log("user logined in")
-    }, 500)
-  }
+      setLoginDetails({
+        email: '',
+        password:'',
+      })
+      console.log("user logined in");
+    }, 600);
+  
+  };
 
   return (
     <main className="main-container">
@@ -82,10 +89,10 @@ export default function Home() {
               <h1>Welcome!</h1>
               <p>Enter details to login.</p>
             </div>
-            <form className="login-form">
+            <form className="login-form"  onSubmit={handleSubmit}>
               <div className="form-field">
                 <input
-                  className={ emailValid ? "" : "error"}
+                  className={emailValid ? "" : "error"}
                   name="email"
                   type="email"
                   id="email"
@@ -103,7 +110,7 @@ export default function Home() {
               </div>
               <div className="form-field">
                 <input
-                  className={ passwordValid ? "" : "error"}
+                  className={passwordValid ? "" : "error"}
                   name="password"
                   id="password"
                   type={showPassword ? "text" : "password"}
@@ -114,7 +121,7 @@ export default function Home() {
                 />
                 <label htmlFor="password">Password</label>
                 <div
-                className={!passwordValid ? "err-msg-toggle": ""}
+                  className={!passwordValid ? "err-msg-toggle" : ""}
                   id="toggle"
                   onClick={toggleShowPassword}
                   role="button"
@@ -134,10 +141,15 @@ export default function Home() {
               <p>forgot password</p>
               <button
                 type="submit"
-                disabled={!loginDetails.email || !loginDetails.password}
-                className="form-button"
+                disabled={
+                  !loginDetails.email ||
+                  !loginDetails.password ||
+                  !emailValid ||
+                  !passwordValid
+                }
+                className= {`form-button ${isLoading ? "button-loading" : ""}`}
               >
-                Log in
+                <span className="btn-text">Log in</span>
               </button>
             </form>
           </div>
