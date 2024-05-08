@@ -3,6 +3,7 @@ interface SidebarProp {
   linkList: {
     name: string;
     icon: string;
+    link: string;
   }[];
 }
 export const sidebarData: SidebarProp[] = [
@@ -12,34 +13,42 @@ export const sidebarData: SidebarProp[] = [
       {
         name: "users",
         icon: "user-friends.svg",
+        link: "/dashboard/users",
       },
       {
         name: "guarantors",
         icon: "users.svg",
+        link: "#",
       },
       {
         name: "loans",
         icon: "sack.svg",
+        link: "#",
       },
       {
         name: "decision models",
         icon: "handshake-regular.svg",
+        link: "#",
       },
       {
         name: "savings",
         icon: "piggy-bank.svg",
+        link: "#",
       },
       {
         name: "loan requests",
         icon: "loan.svg",
+        link: "#",
       },
       {
         name: "whitelist",
         icon: "user-check.svg",
+        link: "#",
       },
       {
         name: "karma",
         icon: "user-times.svg",
+        link: "#",
       },
     ],
   },
@@ -49,60 +58,74 @@ export const sidebarData: SidebarProp[] = [
       {
         name: "organization",
         icon: "briefcase.svg",
+        link: "#",
       },
       {
         name: "loan products",
         icon: "sack.svg",
+        link: "#",
       },
       {
         name: "savings products",
         icon: "bank.svg",
+        link: "#",
       },
       {
         name: "fees and charges",
         icon: "coins-solid.svg",
+        link: "#",
       },
       {
         name: "transactions",
         icon: "transactions.svg",
+        link: "#",
       },
       {
         name: "services",
         icon: "galaxy.svg",
+        link: "#",
       },
       {
         name: "service account",
         icon: "user-cog.svg",
+        link: "#",
       },
       {
         name: "Settlements",
         icon: "scroll.svg",
+        link: "#",
       },
       {
         name: "reports",
         icon: "chart-bar.svg",
+        link: "#",
       },
     ],
   },
 
   {
     title: "settings",
+ 
     linkList: [
       {
         name: "preferences",
         icon: "sliders.svg",
+        link: "#",
       },
       {
         name: "fees and pricing",
         icon: "badge-percent.svg",
+        link: "#",
       },
       {
         name: "audit logs",
         icon: "clipboard-list.svg",
+        link: "#",
       },
       {
         name: "systems messages",
         icon: "tire.svg",
+        link: "#",
       },
     ],
   },

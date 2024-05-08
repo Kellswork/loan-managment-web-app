@@ -88,12 +88,11 @@
     line-height: 16.39px;
     text-transform: none;
     padding-top: 6px;
-    
+
     color: red;
     font-size: 12px;
-
   }
-  #toggle.err-msg-toggle{
+  #toggle.err-msg-toggle {
     top: calc(50% - 8px); /* Adjust the top position relative to the input field height */
   }
 }
@@ -129,6 +128,17 @@
   letter-spacing: 0.1em;
   position: relative;
   cursor: pointer;
+
+  &:hover {
+    box-shadow:
+      0px 1px 1px rgba(0, 0, 0, 0.12),
+      0px 1px 1px rgba(0, 0, 0, 0.24); 
+      opacity: .8;/* 1dp elevation shadow */
+  }
+  &:focus {
+    opacity: 0.9;
+  }
+
 }
 
 .button-loading {
@@ -138,12 +148,12 @@
   }
 
   &::after {
-    content: ""; 
+    content: "";
     position: absolute;
     width: 16px;
     height: 16px;
-    // background-color: red;
-    top:0;
+ 
+    top: 0;
     bottom: 0;
     left: 0;
     right: 0;
@@ -152,16 +162,14 @@
     border-top-color: white;
     border-radius: 50%;
     animation: button-loading-spinner 1s ease infinite;
-
   }
-  @keyframes button-loading-spinner{
+  @keyframes button-loading-spinner {
     from {
-      transform: rotate(0turn)
+      transform: rotate(0turn);
     }
     to {
       transform: rotate(1turn);
     }
-    
   }
 }
 

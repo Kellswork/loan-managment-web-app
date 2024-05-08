@@ -63,7 +63,7 @@ export default function Home() {
         password:'',
       })
       console.log("user logined in");
-    }, 600);
+    }, 1000);
   
   };
 
@@ -89,7 +89,7 @@ export default function Home() {
               <h1>Welcome!</h1>
               <p>Enter details to login.</p>
             </div>
-            <form className="login-form"  onSubmit={handleSubmit}>
+            <form className="login-form"  onSubmit={handleSubmit} method="post">
               <div className="form-field">
                 <input
                   className={emailValid ? "" : "error"}
