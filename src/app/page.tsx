@@ -6,7 +6,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import "./page.scss";
 import Logo from "./components/logo";
-import Password from "antd/es/input/Password";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const [emailValid, setEmailValid] = useState<boolean>(true);
@@ -18,6 +18,7 @@ export default function Home() {
     email: "",
     password: "",
   });
+const router = useRouter();
 
   const toggleShowPassword = (): void => {
     setShowPassword((prev: boolean) => !prev);
@@ -62,7 +63,7 @@ export default function Home() {
         email: '',
         password:'',
       })
-      console.log("user logined in");
+      router.push('/dashboard')
     }, 1000);
   
   };
