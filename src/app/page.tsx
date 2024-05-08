@@ -12,6 +12,7 @@ export default function Home() {
   const [emailValid, setEmailValid] = useState<boolean>(true);
   const [passwordValid, setPasswordValid] = useState<boolean>(true);
   const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [isLoading, setLoading] = useState<boolean>(false)
   const [errMsg, setErrorMsg] = useState({ email: "", password: "" });
   const [loginDetails, setLoginDetails] = useState({
     email: "",
@@ -45,6 +46,19 @@ export default function Home() {
       [e.currentTarget.name]: e.target.value,
     });
   };
+
+  const handleSubmit = () => {
+    setLoading(true);
+    if (!emailValid || !passwordValid) return;
+
+    const user = JSON.stringify(loginDetails)
+    localStorage.setItem("user",user)
+
+    setTimeout(() => {
+      setLoading(false);
+      console.log("user logined in")
+    }, 500)
+  }
 
   return (
     <main className="main-container">
