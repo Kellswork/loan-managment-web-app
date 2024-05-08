@@ -1,0 +1,63 @@
+.user-header-back-link {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  .back-btn {
+    color: rgba(84, 95, 125, 1);
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .user-btn-actions {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    .action-btn-group {
+      display: flex;
+      gap: 20px;
+      width: 50%;
+      justify-content: end;
+    }
+  
+    .btn {
+      max-width: 170px;
+      width: 100%;
+      padding: 12px;
+      font-family: Work Sans;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 16.42px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+  
+    .blacklist {
+      @extend .btn;
+      border: 1px solid rgba(228, 3, 59, 1);
+      color: rgba(228, 3, 59, 1);
+    }
+  
+    .active {
+      @extend .btn;
+      border: 1px solid rgba(57, 205, 204, 1);
+      color: rgba(57, 205, 204, 1);
+    }
+}
+
+}
+
+.user-details-tab-container{
+
+  .user-details-card {
+    display: flex;
+    background-color: white;
+  }
+
+
+}
