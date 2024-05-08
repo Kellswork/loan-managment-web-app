@@ -6,19 +6,40 @@ import { useState } from "react";
 import Image from "next/image";
 import "./page.scss";
 import Logo from "./components/logo";
+import Password from "antd/es/input/Password";
 
 export default function Home() {
+  const [emailValid, setEmailValid] = useState<boolean>(true);
+  const [passwordValid, setPasswordValid] = useState<boolean>(true);
   const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [errMsg, setErrorMsg] = useState({ email: "", password: "" });
   const [loginDetails, setLoginDetails] = useState({
     email: "",
     password: "",
   });
+
   const toggleShowPassword = (): void => {
     setShowPassword((prev: boolean) => !prev);
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
+    const { name, value } = e.currentTarget;
+
+    const isValidEmail =
+      name === "email" ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) : true;
+    const isValidPassword = name === "password" ? value.length >= 4 : true;
+
+    setEmailValid(isValidEmail);
+    setPasswordValid(isValidPassword);
+
+    setErrorMsg({
+      email: isValidEmail ? "" : "Please enter a valid email address",
+      password: isValidPassword
+        ? ""
+        : "Password must be at least 4 characters long",
+    });
+
     setLoginDetails({
       ...loginDetails,
       [e.currentTarget.name]: e.target.value,
@@ -28,7 +49,7 @@ export default function Home() {
   return (
     <main className="main-container">
       <nav>
-        <Logo/>
+        <Logo />
       </nav>
       <div className="login-container">
         <div className="login-container-image">
@@ -50,6 +71,7 @@ export default function Home() {
             <form className="login-form">
               <div className="form-field">
                 <input
+                  className={ emailValid ? "" : "error"}
                   name="email"
                   type="email"
                   id="email"
@@ -59,9 +81,15 @@ export default function Home() {
                   value={loginDetails.email}
                 />
                 <label htmlFor="email">Email</label>
+                <p
+                  className={`${!emailValid ? "err-msg err-text" : "err-msg"}`}
+                >
+                  {errMsg.email}
+                </p>
               </div>
               <div className="form-field">
                 <input
+                  className={ passwordValid ? "" : "error"}
                   name="password"
                   id="password"
                   type={showPassword ? "text" : "password"}
@@ -71,12 +99,27 @@ export default function Home() {
                   value={loginDetails.password}
                 />
                 <label htmlFor="password">Password</label>
-                <div id="toggle" onClick={toggleShowPassword} role="button" tabIndex={0} onKeyDown={toggleShowPassword}>
+                <div
+                className={!passwordValid ? "err-msg-toggle": ""}
+                  id="toggle"
+                  onClick={toggleShowPassword}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={toggleShowPassword}
+                >
                   {showPassword ? "HIDE" : "SHOW"}
                 </div>
+                <p
+                  className={`${
+                    !passwordValid ? "err-msg err-text" : "err-msg"
+                  }`}
+                >
+                  {errMsg.password}
+                </p>
               </div>
               <p>forgot password</p>
-              <button type="submit"
+              <button
+                type="submit"
                 disabled={!loginDetails.email || !loginDetails.password}
                 className="form-button"
               >

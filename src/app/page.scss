@@ -23,10 +23,9 @@
 .form-field {
   position: relative;
   display: flex;
-
+  flex-direction: column;
 
   input {
-    width: 100%;
     padding: 0 16px;
     height: 50px;
     border: 2px solid rgba(84, 95, 125, 0.15);
@@ -49,8 +48,13 @@
     box-shadow: 0px 15px 90px 0px rgba(0, 0, 0, 0.03);
   }
 
-  input:valid, input:focus {
+  input:valid,
+  input:focus {
     border: 2px solid rgba(57, 205, 204, 1);
+  }
+
+  input.error {
+    border: 2px solid red;
   }
 
   input:valid ~ label,
@@ -64,8 +68,6 @@
     font-weight: 600;
   }
 
-  
-
   #toggle {
     font-size: 12px;
     font-weight: 600;
@@ -75,6 +77,24 @@
     right: 20px;
     cursor: pointer;
     color: rgba(57, 205, 204, 1);
+  }
+
+  .err-msg {
+    display: none;
+  }
+  .err-text {
+    display: block;
+    font-size: 12px;
+    line-height: 16.39px;
+    text-transform: none;
+    padding-top: 6px;
+    
+    color: red;
+    font-size: 12px;
+
+  }
+  #toggle.err-msg-toggle{
+    top: calc(50% - 8px); /* Adjust the top position relative to the input field height */
   }
 }
 
