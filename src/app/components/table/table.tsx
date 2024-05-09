@@ -5,6 +5,8 @@ import { tableData } from "../../../utils/data";
 import Image from "next/image";
 import "./table.scss";
 import { FilterCard, StatusCard } from "../card/card";
+import { UserDetailsDataProps } from "@/utils/userDetails";
+
 
 const thead = [
   "organization",
@@ -14,7 +16,8 @@ const thead = [
   "date joined",
   "status",
 ];
-const Table = () => {
+
+const Table = ({data}: {data: UserDetailsDataProps[] | string}) => {
   const [showFilter, setShowFilter] = useState<boolean>(false);
   const [filterPosition, setFilterPosition] = useState({ x: 0, y: 0 });
   const [showCard, setShowCard] = useState(false);
@@ -37,6 +40,8 @@ const Table = () => {
     setCardPosition({ x: offsetX, y: offsetY });
     setShowCard(!showCard);
   };
+
+  console.log(data)
 
   return (
     <div className="table-container">
