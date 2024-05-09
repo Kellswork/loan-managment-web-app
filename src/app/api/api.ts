@@ -26,16 +26,3 @@ export const fetchUsersData = async () => {
   }
 };
 
-// export const userData = async () => {
-//   const data = await fetchUsersData();
-//   const allUsers: UserDataProps[] =
-//     typeof data !== "string"
-//       ? data
-//           .reduce((acc: UserDataProps[], curr: UserDataProps) => {
-//             return acc.concat(curr);
-//           }, [])
-//           .slice(0, 50)
-//       : [];
-
-//   return allUsers;
-// };
