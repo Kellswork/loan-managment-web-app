@@ -3,6 +3,7 @@
   justify-content: space-between;
   margin-top: 20px;
 
+
   .pagination-show {
     display: flex;
     max-width: 227px;
@@ -21,10 +22,16 @@
       display: flex;
       justify-content: space-around;
       align-items: center;
+ 
+      select {
+        cursor: pointer;
+      }
     }
+
   }
 
   .pagination-row {
+    cursor: pointer;
     display: flex;
     max-width: 262px;
     width: 100%;
@@ -54,7 +61,10 @@
       color: rgba(84, 95, 125, 1);
       opacity: 60%;
 
-
+      &.active {
+        opacity: 1;
+      }
     }
+  
   }
 }

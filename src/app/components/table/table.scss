@@ -1,8 +1,33 @@
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 
+@mixin status-color($status) {
+  color: $status;
+  background-color: $status;
+
+  &.inactive {
+    color: gray;
+    background-color: gray;
+  }
+
+  &.pending {
+    color: yellow;
+    background-color: yellow;
+  }
+
+  &.active {
+    color: green;
+    background-color: green;
+  }
+
+  &.blacklisted {
+    color: red;
+    background-color: red;
+  }
+}
+
 .table-container {
   background-color: white;
-  padding:  0 24px;
+  padding: 0 24px;
 
   .resp-table {
     width: 100%;
@@ -18,7 +43,6 @@
     color: rgba(84, 95, 125, 1);
 
     th {
-
       text-align: start;
       padding: 20px 20px 20px 0px;
 
@@ -31,7 +55,7 @@
   }
 
   tbody tr td {
-    padding:25px 20px 25px 0px;
+    padding: 25px 20px 25px 0px;
     color: rgba(84, 95, 125, 1);
     font-size: 14px;
     font-weight: 400;
@@ -46,5 +70,38 @@
 
   tbody > tr:last-child > td {
     border-bottom: 0;
+  }
+
+  .status {
+    padding: 0;
+    span {
+      padding: 6px 12px;
+      font-family: Work Sans;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 16.42px;
+      text-align: center;
+      border-radius: 100px;
+
+      &.pending {
+        background-color: rgba(233, 178, 0, 0.1);
+        color: rgba(233, 178, 0, 1);
+      }
+  
+      &.active {
+        background-color: rgba(57, 205, 98, 0.1);
+        color: rgba(57, 205, 98, 1);
+      }
+  
+      &.inactive {
+        background: rgba(84, 95, 125, 0.1);
+        color: rgba(84, 95, 125, 1);
+      }
+      &.blacklisted {
+        background-color: rgba(228, 3, 59, 0.1);
+        color: rgba(228, 3, 59, 1);
+      }
+    }
+
   }
 }

@@ -1,3 +1,48 @@
+export interface UserDataProps {
+  personal_information: {
+      organization: string;
+      username: string;
+      full_name: string;
+      phone_number: string;
+      email: string;
+      bvn: number;
+      gender: string;
+      marital_status: string;
+      children: number;
+      type_of_residence: string;
+  };
+  education_and_employment: {
+      level_of_education: string;
+      employment_status: string;
+      sector_of_employment: string;
+      duration_of_employment: string;
+      monthly_income: {
+          lower: string;
+          upper: string;
+      };
+      loan_repayment: string;
+  };
+  socials: {
+      twitter: string;
+      facebook: string;
+      instagram: string;
+  };
+  guarantor: {
+      full_name: string;
+      phonenumber: string;
+      email_address: string;
+      relationship: string;
+  };
+  general: {
+      user_id: string;
+      user_tier: number;
+      user_status: string;
+      loan_amount: string;
+      date_joined: string;
+  };
+}
+
+
 export interface UserDetailsDataProps {
   personalInformation: {
     fullName: string;
