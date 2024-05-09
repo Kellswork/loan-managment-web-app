@@ -6,7 +6,7 @@ import "./table.scss";
 import { FilterCard, StatusCard } from "../card/card";
 import { UserDataProps } from "@/utils/userDetails";
 import Pagination from "../pagination/pagination";
-
+import { formatDate } from "@/utils/helpers";
 
 const thead = [
   "organization",
@@ -17,13 +17,11 @@ const thead = [
   "status",
 ];
 
-const Table = ({userData}:{userData: UserDataProps[] | string}) => {
-  
+const Table = ({ userData }: { userData: UserDataProps[] | string }) => {
   const [showFilter, setShowFilter] = useState<boolean>(false);
   const [filterPosition, setFilterPosition] = useState({ x: 0, y: 0 });
   const [showCard, setShowCard] = useState(false);
   const [cardPosition, setCardPosition] = useState({ x: 0, y: 0 });
-
 
   const toggleFilter = (event: React.MouseEvent<HTMLSpanElement>) => {
     const filterCardWidth = 270;
@@ -38,7 +36,7 @@ const Table = ({userData}:{userData: UserDataProps[] | string}) => {
   const toggleCard = (event: React.MouseEvent<HTMLTableCellElement>) => {
     const cellPos = event.currentTarget.getBoundingClientRect();
     const offsetX = cellPos.left - cellPos.width / 2 - 100;
-    const offsetY = cellPos.top - window.scrollY; // Adjusted to use cellPos.top
+    const offsetY = cellPos.top + window.scrollY;
     setCardPosition({ x: offsetX, y: offsetY });
     setShowCard(!showCard);
   };
@@ -51,42 +49,49 @@ const Table = ({userData}:{userData: UserDataProps[] | string}) => {
   const startIndex = (currentPage - 1) * recordPerPage;
 
   const endIndex = Math.min(startIndex + recordPerPage, userData.length);
-  const currentUsersDisplayedOnTable = Array.isArray(userData) ? userData.slice(startIndex, endIndex): [];
+  const currentUsersDisplayedOnTable = Array.isArray(userData)
+    ? userData.slice(startIndex, endIndex)
+    : [];
 
   console.log(userData);
 
   return (
     <>
-
-    <div className="table-container">
-      <table className="resp-table">
-        <thead>
-          <tr>
-            {thead.map((th) => (
-              <th key={th}>
-                {th}
-                <span onClick={toggleFilter}>
-                  <Image
-                    src="/filter-results-button.svg"
-                    alt="filter results button"
-                    width={16}
-                    height={16}
-                    priority
-                  />
-                </span>
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {currentUsersDisplayedOnTable.map((data) => (
+      <div className="table-container">
+        <table className="resp-table">
+          <thead>
+            <tr>
+              {thead.map((th) => (
+                <th key={th}>
+                  {th}
+                  <span onClick={toggleFilter}>
+                    <Image
+                      src="/filter-results-button.svg"
+                      alt="filter results button"
+                      width={16}
+                      height={16}
+                      priority
+                    />
+                  </span>
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {currentUsersDisplayedOnTable.map((data) => (
               <tr key={data.general.user_id}>
                 <td>{data.personal_information.organization}</td>
                 <td>{data.personal_information.username}</td>
                 <td>{data.personal_information.email}</td>
                 <td>{data.personal_information.phone_number}</td>
-                <td>{data.general.date_joined}</td>
-                <td>{data.general.user_status}</td>
+                <td>{formatDate(data.general.date_joined)}</td>
+                <td className="status">
+                  <span
+                    className={`status ${data.general.user_status.toLocaleLowerCase()}`}
+                  >
+                    {data.general.user_status}
+                  </span>
+                </td>
                 <td onClick={toggleCard}>
                   <Image
                     src="/eclipse.svg"
@@ -98,16 +103,21 @@ const Table = ({userData}:{userData: UserDataProps[] | string}) => {
                 </td>
               </tr>
             ))}
-        </tbody>
-      </table>
-      {showFilter ? (
-        <FilterCard top={filterPosition.y} left={filterPosition.x} />
-      ) : null}
-      {showCard ? (
-        <StatusCard top={cardPosition.y} left={cardPosition.x} />
-      ) : null}
-    </div>
-    <Pagination totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} totalUserData={userData.length} />
+          </tbody>
+        </table>
+        {showFilter ? (
+          <FilterCard top={filterPosition.y} left={filterPosition.x} />
+        ) : null}
+        {showCard ? (
+          <StatusCard top={cardPosition.y} left={cardPosition.x} />
+        ) : null}
+      </div>
+      <Pagination
+        totalPages={totalPages}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        totalUserData={userData.length}
+      />
     </>
   );
 };
