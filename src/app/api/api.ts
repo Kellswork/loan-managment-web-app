@@ -1,13 +1,21 @@
 import { UserDataProps, UserDetailsDataProps } from "@/utils/userDetails";
 
-export const getUsersData = async () => {
+export const fetchUsersData = async () => {
   try {
     const response = await fetch(
       "https://run.mocky.io/v3/4a5a47e2-3680-4181-a1d8-b6837f9815fb",
       { next: { revalidate: 3600 } }
     );
     const responseData = (await response.json()) as UserDataProps[];
-    return responseData;
+
+    const users = responseData
+      .reduce((acc: UserDataProps[], curr: UserDataProps) => {
+        return acc.concat(curr);
+      }, [])
+      .slice(0, 199);
+      console.log(response)
+
+    return users;
   } catch (error) {
     let err: string | undefined;
     if (error instanceof TypeError) {
@@ -17,3 +25,17 @@ export const getUsersData = async () => {
     return `There was a problem fetching the data`;
   }
 };
+
+// export const userData = async () => {
+//   const data = await fetchUsersData();
+//   const allUsers: UserDataProps[] =
+//     typeof data !== "string"
+//       ? data
+//           .reduce((acc: UserDataProps[], curr: UserDataProps) => {
+//             return acc.concat(curr);
+//           }, [])
+//           .slice(0, 50)
+//       : [];
+
+//   return allUsers;
+// };

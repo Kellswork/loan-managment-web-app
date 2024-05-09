@@ -21,6 +21,12 @@
       display: flex;
       justify-content: space-around;
       align-items: center;
+      select {
+      
+
+
+    
+      }
     }
   }
 
@@ -54,7 +60,10 @@
       color: rgba(84, 95, 125, 1);
       opacity: 60%;
 
-
+      &.active {
+        opacity: 1;
+      }
     }
+  
   }
 }

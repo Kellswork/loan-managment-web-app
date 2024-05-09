@@ -1,28 +1,71 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Image from "next/image";
 import "./pagination.scss";
-import { UserDataProps } from "@/utils/userDetails";
 
-const Pagination = ({data}:{data: UserDataProps[]}) => {
-  
+
+interface PaginationProps {
+  totalPages: number;
+  currentPage: number;
+  totalUserData: number;
+  setCurrentPage: (page: number) => void;
+}
+
+const Pagination = ({
+  totalPages,
+  currentPage,
+  setCurrentPage,
+  totalUserData
+}: PaginationProps) => {
+  const pageNumbers = [];
+  for (let i = 1; i <= totalPages; i++) pageNumbers.push(i);
+
+
+  // handl prev and next
+  const nextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+   // Handle page selection from dropdown
+   const handlePageSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setCurrentPage(parseInt(e.target.value));
+  }
+
   return (
     <div className="pagination-container">
       <div className="pagination-show">
-        <p>showing</p>
+      <p>
+          Showing 
+        </p>
         <div className="pagination-picker">
-          <span>100</span>
-          <Image
+          <select value={currentPage} onChange={handlePageSelect}>
+            {pageNumbers.map((pageNumber, index) => (
+              <option key={pageNumber} value={pageNumber}>
+                {pageNumber}
+              </option>
+            ))}
+          </select>
+          
+          {/* TODO <Image
             src="/sidebar/dropdown-outline.svg"
             alt=""
             width={14}
             height={14}
             priority
-          />
+          /> */}
         </div>
-        <p>out of 100</p>
+        <p>out of {totalUserData}</p>
       </div>
+
       <div className="pagination-row">
-        <div className="arrow-background">
+        <div onClick={prevPage} className="arrow-background">
           <Image
             src="/arrow_prev.svg"
             alt="previous icon for pagination navigation"
@@ -32,15 +75,39 @@ const Pagination = ({data}:{data: UserDataProps[]}) => {
           />
         </div>
 
-        <ul>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-          <li>...</li>
-          <li>15</li>
-          <li>16</li>
-        </ul>
-        <div className="arrow-background">
+        {
+          <ul className="ul">
+            {pageNumbers.map((pageNumber, index) => {
+              if (
+                pageNumber === 1 ||
+                pageNumber === currentPage ||
+                pageNumber == totalPages ||
+                pageNumber == totalPages - 1 ||
+                (pageNumber >= currentPage - 3 && pageNumber <= currentPage + 3)
+              ) {
+                return (
+                  <li
+                    className={pageNumber === currentPage ? "active" : ""}
+                    key={pageNumber}
+                    onClick={() => setCurrentPage(pageNumber)}
+                  >
+                    {pageNumber}
+                  </li>
+                );
+              }
+              // display elipse for pages not shown
+              if (
+                pageNumber === currentPage - 4 ||
+                pageNumber === currentPage + 4
+              ) {
+                return <span key={pageNumber}>...</span>;
+              }
+              return null;
+            })}
+          </ul>
+        }
+
+        <div onClick={nextPage} className="arrow-background">
           <Image
             src="/arrow_next.svg"
             alt="previous icon for pagination navigation"
@@ -55,3 +122,4 @@ const Pagination = ({data}:{data: UserDataProps[]}) => {
 };
 
 export default Pagination;
+
