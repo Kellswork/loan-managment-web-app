@@ -1,4 +1,4 @@
-import { UserDetailsDataProps } from "@/utils/userDetails";
+import { UserDataProps, UserDetailsDataProps } from "@/utils/userDetails";
 
 export const getUsersData = async () => {
   try {
@@ -6,7 +6,7 @@ export const getUsersData = async () => {
       "https://run.mocky.io/v3/4a5a47e2-3680-4181-a1d8-b6837f9815fb",
       { next: { revalidate: 3600 } }
     );
-    const responseData = (await response.json()) as UserDetailsDataProps[];
+    const responseData = (await response.json()) as UserDataProps[];
     return responseData;
   } catch (error) {
     let err: string | undefined;

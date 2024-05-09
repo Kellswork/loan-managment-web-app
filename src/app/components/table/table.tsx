@@ -1,11 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import { tableData } from "../../../utils/data";
 import Image from "next/image";
 import "./table.scss";
 import { FilterCard, StatusCard } from "../card/card";
-import { UserDetailsDataProps } from "@/utils/userDetails";
+import { UserDataProps, UserDetailsDataProps } from "@/utils/userDetails";
 
 
 const thead = [
@@ -17,11 +16,17 @@ const thead = [
   "status",
 ];
 
-const Table = ({data}: {data: UserDetailsDataProps[] | string}) => {
+const Table = ({data}: {data: UserDataProps[] | string}) => {
   const [showFilter, setShowFilter] = useState<boolean>(false);
   const [filterPosition, setFilterPosition] = useState({ x: 0, y: 0 });
   const [showCard, setShowCard] = useState(false);
   const [cardPosition, setCardPosition] = useState({ x: 0, y: 0 });
+  const allUsers: UserDataProps[] = typeof data !== 'string'
+  ? data.reduce((acc: UserDataProps[], curr: UserDataProps) => {
+      return acc.concat(curr);
+    }, []).slice(0, 20)
+  : []; // concat fetch data into one array
+  
 
   const toggleFilter = (event: React.MouseEvent<HTMLSpanElement>) => {
     const filterCardWidth = 270
@@ -41,7 +46,7 @@ const Table = ({data}: {data: UserDetailsDataProps[] | string}) => {
     setShowCard(!showCard);
   };
 
-  console.log(data)
+console.log(allUsers[100])
 
   return (
     <div className="table-container">
@@ -66,18 +71,18 @@ const Table = ({data}: {data: UserDetailsDataProps[] | string}) => {
         
         </thead>
         <tbody>
-          {tableData.map((data) => (
-            <tr key={data.email}>
-              <td>{data.organization}</td>
-              <td>{data.username}</td>
-              <td>{data.email}</td>
-              <td>{data.phonenumber}</td>
-              <td>{data.dateJoined}</td>
-              <td>{data.status}</td>
+          {allUsers.map((data) => (
+            <tr key={data.general.user_id}>
+              <td>{data.personal_information.organization}</td>
+              <td>{data.personal_information.username}</td>
+              <td>{data.personal_information.email}</td>
+              <td>{data.personal_information.phone_number}</td>
+              <td>{data.general.date_joined}</td>
+              <td>{data.general.user_status}</td>
               <td onClick={toggleCard}>
                 <Image
                   src="/eclipse.svg"
-                  alt="vie actions "
+                  alt="view actions "
                   width={16}
                   height={16}
                   priority

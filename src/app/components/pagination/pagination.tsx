@@ -1,8 +1,10 @@
 import React from "react";
 import Image from "next/image";
 import "./pagination.scss";
+import { UserDataProps } from "@/utils/userDetails";
 
-const Pagination = () => {
+const Pagination = ({data}:{data: UserDataProps[]}) => {
+  
   return (
     <div className="pagination-container">
       <div className="pagination-show">
