@@ -1,7 +1,5 @@
 import React from "react";
 import Image from "next/image";
-import "./card.scss";
-import Link from "next/link";
 
 export const Card = () => (
   <div className="card-container">
@@ -100,34 +98,4 @@ export const FilterCard = ({ top, left }: { top: number; left: number }) => (
   </div>
 );
 
-export const StatusCard = ({ top, left }: { top: number; left: number }) => (
-  <div className="status-card-container" style={{ top: `${top}px`, left: `${left}px` }}>
-    <div className="items">
-      <Link href="#">
-        <Image src="/view.svg" alt="" width={16} height={16} priority />
-        <span>View Details</span>
-      </Link>
 
-      <Link href="#">
-        <Image
-          src="/delete-friend.svg"
-          alt=""
-          width={16}
-          height={16}
-          priority
-        />
-        <span>Blacklist User</span>
-      </Link>
-      <Link href="#">
-        <Image
-          src="/reactivate-user.svg"
-          alt=""
-          width={16}
-          height={16}
-          priority
-        />
-        <span>Activate User</span>
-      </Link>
-    </div>
-  </div>
-);
