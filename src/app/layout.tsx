@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "../styles/globals.scss";
-
+import { StoreContextProvider } from "./_context-and-reducer/storeContext";
 
 export const metadata: Metadata = {
   title: "lendsqr",
@@ -14,7 +14,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <StoreContextProvider>{children}</StoreContextProvider>
+      </body>
     </html>
   );
 }
