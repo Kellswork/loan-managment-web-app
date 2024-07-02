@@ -1,9 +1,10 @@
+"use client"
 import React from "react";
 import {Card} from "../../components/card/card";
 import Table from "../../components/table/table";
-import { fetchUsersData } from "@/app/api/api";
 
 async function Page() {
+
 
   return (
     <div className="card-table-layout">

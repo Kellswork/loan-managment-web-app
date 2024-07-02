@@ -3,7 +3,7 @@ import { UserDataProps } from "@/utils/userDetails";
 export const fetchUsersData = async () => {
   try {
     const response = await fetch(
-      "https://run.mocky.io/v3/022c5272-7dc8-44ac-aecd-8c52eaec579b",
+      "https://run.mocky.io/v3/53964ef3-7f9b-407f-9e65-30e40d79782c",
       { next: { revalidate: 3600 } }
     );
        if (!response.ok) {
@@ -27,5 +27,7 @@ export const fetchUsersData = async () => {
 
 
 
-// https://run.mocky.io/v3/4a5a47e2-3680-4181-a1d8-b6837f9815fb
+// https://run.mocky.io/v3/022c5272-7dc8-44ac-aecd-8c52eaec579b
 //use for testing error response 
+
+// working api : https://run.mocky.io/v3/53964ef3-7f9b-407f-9e65-30e40d79782c

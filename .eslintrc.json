@@ -23,7 +23,7 @@
     ]
   },
   "rules": {
-    "eslint-plugin-import/extensions":"never",
+    "eslint-plugin-import/extensions": "never",
     "react/jsx-filename-extension": [
       2,
       {

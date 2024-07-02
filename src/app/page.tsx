@@ -63,7 +63,7 @@ const router = useRouter();
         email: '',
         password:'',
       })
-      router.push('/dashboard')
+      router.push('/dashboard/users')
     }, 1000);
   
   };
