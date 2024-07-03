@@ -6,6 +6,16 @@ interface SidebarProp {
     link: string;
   }[];
 }
+
+export const thead = [
+  "organization",
+  "username",
+  "email",
+  "phone number",
+  "date joined",
+  "status",
+];
+
 export const sidebarData: SidebarProp[] = [
   {
     title: "customers",

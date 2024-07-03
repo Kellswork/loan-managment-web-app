@@ -8,8 +8,7 @@ function Page() {
     <div className="card-table-layout">
       <h2>Users</h2>
       <Card />
-      {/* <Table />
-      <Pagination /> */}
+      <Table />
     </div>
   );
 }

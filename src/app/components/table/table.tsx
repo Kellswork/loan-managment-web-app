@@ -1,26 +1,25 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Image from "next/image";
 import "./table.scss";
-import { FilterCard, StatusCard } from "../card/card";
+import { FilterCard } from "../card/FilterCard";
 import { UserDataProps } from "@/utils/userDetails";
 import Pagination from "../pagination/pagination";
 import { formatDate } from "@/utils/helpers";
+import { StoreContext } from "@/app/_context-and-reducer/storeContext";
+import { StatusCard } from "../card/statusCard";
+import { thead } from "@/utils/data";
+import TableSkeletonLoader from "./tableLoaderSkeleton";
 
-const thead = [
-  "organization",
-  "username",
-  "email",
-  "phone number",
-  "date joined",
-  "status",
-];
+const Table = () => {
+  const { userData, updateUserStatus, error, loading } =
+    useContext(StoreContext);
 
-const Table = ({ userData }: { userData: UserDataProps[] | string }) => {
   const [showFilter, setShowFilter] = useState<boolean>(false);
   const [filterPosition, setFilterPosition] = useState({ x: 0, y: 0 });
   const [showCard, setShowCard] = useState(false);
+  const [selectedUserId, setSelectedUserId] = useState("");
   const [cardPosition, setCardPosition] = useState({ x: 0, y: 0 });
 
   const toggleFilter = (event: React.MouseEvent<HTMLSpanElement>) => {
@@ -30,15 +29,26 @@ const Table = ({ userData }: { userData: UserDataProps[] | string }) => {
 
     setFilterPosition({ x: left, y: filterPos.bottom + window.scrollY });
     setShowFilter(!showFilter);
-    console.log(filterPosition.x, filterPosition.y);
   };
 
-  const toggleCard = (event: React.MouseEvent<HTMLTableCellElement>) => {
+  const handleUpdateStatus = (newStatus: "Blacklisted" | "Active") => {
+    if (selectedUserId) {
+      updateUserStatus && updateUserStatus(selectedUserId, newStatus);
+      setSelectedUserId("");
+      setShowCard(!showCard);
+    }
+  };
+
+  const toggleCard = (
+    event: React.MouseEvent<HTMLTableCellElement>,
+    userId: string
+  ) => {
     const cellPos = event.currentTarget.getBoundingClientRect();
     const offsetX = cellPos.left - cellPos.width / 2 - 100;
     const offsetY = cellPos.top + window.scrollY;
     setCardPosition({ x: offsetX, y: offsetY });
     setShowCard(!showCard);
+    setSelectedUserId(userId);
   };
 
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -53,8 +63,9 @@ const Table = ({ userData }: { userData: UserDataProps[] | string }) => {
     ? userData.slice(startIndex, endIndex)
     : [];
 
-  console.log(userData);
-
+  if (loading) {
+    return <TableSkeletonLoader />;
+  }
   return (
     <>
       <div className="table-container">
@@ -78,6 +89,13 @@ const Table = ({ userData }: { userData: UserDataProps[] | string }) => {
             </tr>
           </thead>
           <tbody>
+            {error && (
+              <tr className="error-row">
+                <td colSpan={7} className="error-message">
+                  There was a problem fetching the data. Please try again later.
+                </td>
+              </tr>
+            )}
             {currentUsersDisplayedOnTable.map((data) => (
               <tr key={data.general.user_id}>
                 <td>{data.personal_information.organization}</td>
@@ -92,7 +110,9 @@ const Table = ({ userData }: { userData: UserDataProps[] | string }) => {
                     {data.general.user_status}
                   </span>
                 </td>
-                <td onClick={toggleCard}>
+                <td
+                  onClick={(event) => toggleCard(event, data.general.user_id)}
+                >
                   <Image
                     src="/eclipse.svg"
                     alt="view actions "
@@ -109,7 +129,12 @@ const Table = ({ userData }: { userData: UserDataProps[] | string }) => {
           <FilterCard top={filterPosition.y} left={filterPosition.x} />
         ) : null}
         {showCard ? (
-          <StatusCard top={cardPosition.y} left={cardPosition.x} />
+          <StatusCard
+            onUpdateUserStatus={handleUpdateStatus}
+            userId={selectedUserId!}
+            top={cardPosition.y}
+            left={cardPosition.x}
+          />
         ) : null}
       </div>
       <Pagination
