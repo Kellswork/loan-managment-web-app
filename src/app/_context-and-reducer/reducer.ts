@@ -54,21 +54,24 @@ export const storeReducer = (state: State, action: Action) => {
         error: action.payload,
       };
     case ActionTypes.UPDATE_USER_STATUS:
+      const updatedUserData =  state.userData.map((user: UserDataProps) => {
+        if (user.general.user_id == action.payload.userId) {
+          return {
+            ...user,
+            general: {
+              ...user.general,
+              user_status: action.payload.newStatus,
+            },
+          };
+        }
+        return user;
+      });
+      localStorage.setItem('appData', JSON.stringify(updatedUserData))
       return {
         ...state,
         loading: false,
-        userData: state.userData.map((user: UserDataProps) => {
-          if (user.general.user_id == action.payload.userId) {
-            return {
-              ...user,
-              general: {
-                ...user.general,
-                user_status: action.payload.newStatus,
-              },
-            };
-          }
-          return user;
-        })
+        userData: updatedUserData
+        
       };
     default:
       return state;
