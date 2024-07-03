@@ -16,8 +16,6 @@ const Table = () => {
   const { userData, updateUserStatus, error, loading } =
     useContext(StoreContext);
 
-  console.log("h", userData);
-
   const [showFilter, setShowFilter] = useState<boolean>(false);
   const [filterPosition, setFilterPosition] = useState({ x: 0, y: 0 });
   const [showCard, setShowCard] = useState(false);

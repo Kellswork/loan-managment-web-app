@@ -16,8 +16,6 @@ export const fetchUsersData = async () => {
         return acc.concat(curr);
       }, [])
       .slice(0, 199);
-      console.log(response)
-
     return users;
   } catch (error) {
     console.error("Error fetching data:", error);
