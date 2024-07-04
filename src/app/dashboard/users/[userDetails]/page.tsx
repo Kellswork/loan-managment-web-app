@@ -1,7 +1,4 @@
 import React from "react";
-// import {Card} from "../components/card/card";
-// import Table from "../components/table/table";
-// import Pagination from "../components/pagination/pagination";
 import Image from "next/image";
 import "./page.scss";
 import { Tabs } from "@/app/components/tab/tab";
@@ -25,7 +22,7 @@ function Page() {
           <h2>Users Details</h2>
           <div className="action-btn-group">
             <button className="btn blacklist">blacklist user</button>
-            <button className="btn active">active user</button>
+            <button className="btn active">activate user</button>
           </div>
         </div>
       </div>
