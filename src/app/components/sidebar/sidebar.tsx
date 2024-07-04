@@ -35,13 +35,16 @@ const TextIcon = ({
 const Sidebar = () => {
   const pathname = usePathname();
   const router = useRouter();
-  console.log('path', pathname)
-  const isActive = (link: string) => pathname === link;
+
+  const isDashboardActive = (link: string) => pathname === link;
+  // sidebar naviagtion /users should be active when a user navigates to /users/userdetails
+  const currentLink = pathname.split("/")[2];
+  const isActive = (link: string) => link.includes(currentLink);
 
   const handleLogout = () => {
     localStorage.removeItem("user");
-    router.push('/')
-  }
+    router.push("/");
+  };
   return (
     <aside className="sidebar-container">
       <div className="sidebar-org">
@@ -62,7 +65,11 @@ const Sidebar = () => {
           priority
         />
       </div>
-      <div className={`dashboard-link ${isActive("/dashboard") && "active"}`}>
+      <div
+        className={`dashboard-link ${
+          isDashboardActive("/dashboard") && "active"
+        }`}
+      >
         <TextIcon
           link="/dashboard"
           text="dashboard"
@@ -73,31 +80,33 @@ const Sidebar = () => {
 
       {sidebarData.map((data) => (
         <div key={data.title} className="sidebar-nav-links">
-          <h4>{data.title}</h4> 
+          <h4>{data.title}</h4>
           <ul>
             {data.linkList.map((link) => (
-              <li key={link.name} className={`${isActive(link.link) && "active"}`}>
+              <li
+                key={link.name}
+                className={`${isActive(link.link) && "active"}`}
+              >
                 <TextIcon
                   text={link.name}
                   icon={link.icon}
                   alt={link.name + " svg icon"}
                   link={link.link}
-                  
                 />
               </li>
             ))}
           </ul>
         </div>
       ))}
-      <hr/>
-      <div className='sidebar-nav-links logout' onClick={handleLogout}>
-        <TextIcon link="#"
+      <hr />
+      <div className="sidebar-nav-links logout" onClick={handleLogout}>
+        <TextIcon
+          link="#"
           text="Logout"
           icon="sign-out.svg"
-          alt="logout link"/>
-      <p>
-      v1.2.0
-      </p>
+          alt="logout link"
+        />
+        <p>v1.2.0</p>
       </div>
     </aside>
   );

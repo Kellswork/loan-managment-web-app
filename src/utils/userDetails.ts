@@ -113,12 +113,6 @@ export const userDetailsData:UserDetailsDataProps = {
       phoneNumber: "07060780922",
       emailAddress: "debby@gmail.com",
       relationship: "Sister"
-    },
-    {
-      fullName: "Debby Ogana",
-      phoneNumber: "07060780922",
-      emailAddress: "debby@gmail.com",
-      relationship: "Sister"
     }
   ]
 };

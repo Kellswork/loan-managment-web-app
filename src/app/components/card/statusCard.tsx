@@ -21,7 +21,7 @@ export const StatusCard = ({ top, left, userId, onUpdateUserStatus }: { top: num
   return (
     <div className="status-card-container" style={{ top: `${top}px`, left: `${left}px` }}>
       <div className="items">
-        <Link href="#" className="item">
+        <Link href={`/dashboard/users/${userId}`} className="item">
           <Image src="/view.svg" alt="" width={16} height={16} priority />
           <span>View Details</span>
         </Link>
