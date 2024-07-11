@@ -1,14 +1,59 @@
-import React from "react";
+"use client";
+import React, { useContext, useState } from "react";
+import { useParams } from "next/navigation";
 import Image from "next/image";
 import "./page.scss";
 import { Tabs } from "@/app/components/tab/tab";
-import { userDetailsData } from "@/utils/userDetails";
+import { StoreContext } from "@/app/_context-and-reducer/storeContext";
+import Link from "next/link";
+import { Alert } from "@/app/components/alert/alert";
 
 function Page() {
+  // fetc data list and update status fiunction
+  const { userData, updateUserStatus } = useContext(StoreContext);
+  const [showAlert, setShowAlert] = useState({
+    visible: false,
+    text: "",
+    color: "",
+  });
+
+  // fetch the ID
+  const router: { userDetails: string } = useParams();
+
+  const userID = router.userDetails;
+  // write the filter function
+  const currentUser = userData.find((user) => user.general.user_id === userID);
+  console.log(currentUser);
+  const truncateId = (id: string | undefined) => {
+    if (id) return id.slice(0, 11);
+  };
+
+  const handleUpdateStatus = (newStatus: "Blacklisted" | "Active") => {
+    updateUserStatus && updateUserStatus(userID, newStatus);
+
+    let text: string = "";
+    let color: string = "";
+
+    if (newStatus === "Blacklisted") {
+      text = "User successfully blacklisted!";
+      color = "red";
+    } else if (newStatus === "Active") {
+      text = "User successfully activated!";
+      color = "green";
+    }
+
+    setShowAlert({
+      visible: true,
+      text: text,
+      color: color,
+    });
+  };
+
   return (
     <div className="card-table-layout">
+      {showAlert.visible && <Alert color={showAlert.color} statusText={showAlert.text} />}
       <div className="user-header-back-link">
-        <p className="back-btn">
+        <Link href="/dashboard/users" className="back-btn">
           <Image
             src="/back-arrow.svg"
             alt="back arrow on user details page"
@@ -17,12 +62,22 @@ function Page() {
             priority
           />
           Back to Users
-        </p>
+        </Link>
         <div className="user-btn-actions">
           <h2>Users Details</h2>
           <div className="action-btn-group">
-            <button className="btn blacklist">blacklist user</button>
-            <button className="btn active">activate user</button>
+            <button
+              className="btn blacklist"
+              onClick={() => handleUpdateStatus("Blacklisted")}
+            >
+              blacklist user
+            </button>
+            <button
+              className="btn active"
+              onClick={() => handleUpdateStatus("Active")}
+            >
+              activate user
+            </button>
           </div>
         </div>
       </div>
@@ -38,23 +93,22 @@ function Page() {
               priority
             />
             <div className="user-name-id">
-              <h3>Grace Effiom</h3>
-              <p>LSQFf587g90</p>
+              <h3>{currentUser?.personal_information.full_name}</h3>
+              <p>{truncateId(currentUser?.general.user_id)}</p>
             </div>
           </div>
           <div className="vertical-line"></div>
           <div className="user-ratings">
             <h3>User’s Tier</h3>
-            <p>stars</p>
-            
+            <p>{currentUser?.general.user_tier}</p>
           </div>
           <div className="vertical-line"></div>
           <div className="user-acc-details">
-            <h3>₦200,000.00</h3>
+            <h3>₦{currentUser?.general.loan_amount}</h3>
             <p>9912345678/Providus Bank</p>
           </div>
         </div>
-        <Tabs userData={userDetailsData} />
+        <Tabs userData={currentUser} />
       </div>
     </div>
   );

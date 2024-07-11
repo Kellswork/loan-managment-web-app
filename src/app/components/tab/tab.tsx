@@ -1,11 +1,11 @@
 "use client";
 
-import { UserDetailsDataProps } from "@/utils/userDetails";
+import { UserDataProps, UserDetailsDataProps } from "@/utils/userDetails";
 import React, { useState } from "react";
 import "./tab.scss";
 
 interface TabsProps {
-  userData: UserDetailsDataProps;
+  userData: UserDataProps | undefined;
 }
 
 const TabButtons = () => {
@@ -21,7 +21,7 @@ const TabButtons = () => {
   );
 };
 
-const TabContent: React.FC<{ userData: UserDetailsDataProps }> = ({
+const TabContent: React.FC<{ userData: UserDataProps | undefined }> = ({
   userData,
 }) => {
   const [activeTab, setActiveTab] = useState<string>("General Details");
@@ -33,35 +33,35 @@ const TabContent: React.FC<{ userData: UserDetailsDataProps }> = ({
         <div className="content-details">
           <div>
             <p>Full Name</p>
-            <p>{userData.personalInformation.fullName}</p>
+            <p>{userData?.personal_information.full_name}</p>
           </div>
           <div>
             <p>Phone Number</p>
-            <p>{userData.personalInformation.phoneNumber}</p>
+            <p>{userData?.personal_information.phone_number}</p>
           </div>
           <div>
             <p>Email Address</p>
-            <p>{userData.personalInformation.emailAddress}</p>
+            <p>{userData?.personal_information.email}</p>
           </div>
           <div>
             <p>BVN</p>
-            <p>{userData.personalInformation.bvn}</p>
+            <p>{userData?.personal_information.bvn}</p>
           </div>
           <div>
             <p>Gender</p>
-            <p>{userData.personalInformation.gender}</p>
+            <p>{userData?.personal_information.gender}</p>
           </div>
           <div>
             <p>Marital Status</p>
-            <p>{userData.personalInformation.maritalStatus}</p>
+            <p>{userData?.personal_information.marital_status}</p>
           </div>
           <div>
             <p>Children</p>
-            <p>{userData.personalInformation.children}</p>
+            <p>{userData?.personal_information.children}</p>
           </div>
           <div>
             <p>Type of Residence</p>
-            <p>{userData.personalInformation.typeOfResidence}</p>
+            <p>{userData?.personal_information.type_of_residence}</p>
           </div>
         </div>
       </div>
@@ -71,31 +71,34 @@ const TabContent: React.FC<{ userData: UserDetailsDataProps }> = ({
         <div className="content-details">
           <div>
             <p>Level of Education</p>
-            <p>{userData.educationAndEmployment.levelOfEducation}</p>
+            <p>{userData?.education_and_employment.level_of_education}</p>
           </div>
           <div>
             <p>Employment Status</p>
-            <p>{userData.educationAndEmployment.employmentStatus}</p>
+            <p>{userData?.education_and_employment.employment_status}</p>
           </div>
           <div>
             <p>Sector of Employment</p>
-            <p>{userData.educationAndEmployment.sectorOfEmployment}</p>
+            <p>{userData?.education_and_employment.sector_of_employment}</p>
           </div>
           <div>
             <p>Duration of Employment</p>
-            <p>{userData.educationAndEmployment.durationOfEmployment}</p>
+            <p>{userData?.education_and_employment.duration_of_employment}</p>
           </div>
           <div>
             <p>Office Email</p>
-            <p>{userData.educationAndEmployment.officeEmail}</p>
+            <p></p>
           </div>
           <div>
             <p>Monthly Income</p>
-            <p>{userData.educationAndEmployment.monthlyIncome}</p>
+            <p>
+              ₦{userData?.education_and_employment.monthly_income.lower}-₦
+              {userData?.education_and_employment.monthly_income.upper}
+            </p>
           </div>
           <div>
             <p>Loan Repayment</p>
-            <p>{userData.educationAndEmployment.loanRepayment}</p>
+            <p>{userData?.education_and_employment.loan_repayment}</p>
           </div>
         </div>
       </div>
@@ -105,15 +108,15 @@ const TabContent: React.FC<{ userData: UserDetailsDataProps }> = ({
         <div className="content-details">
           <div>
             <p>Twitter</p>
-            <p>{userData.socials.twitter}</p>
+            <p>{userData?.socials.twitter}</p>
           </div>
           <div>
             <p>Facebook</p>
-            <p>{userData.socials.facebook}</p>
+            <p>{userData?.socials.facebook}</p>
           </div>
           <div>
             <p>Instagram</p>
-            <p>{userData.socials.instagram}</p>
+            <p>{userData?.socials.instagram}</p>
           </div>
         </div>
       </div>
@@ -121,7 +124,26 @@ const TabContent: React.FC<{ userData: UserDetailsDataProps }> = ({
       <div className="tab-content-section ">
         <h4>Guarantors</h4>
 
-        {userData.guarantors.map((guarantor, index) => (
+        <div className="content-details guarantors">
+          <div>
+            <p>Full Name</p>
+            <p>{userData?.guarantor.full_name}</p>
+          </div>
+          <div>
+            <p>Phone Number</p>
+            <p>{userData?.guarantor.phonenumber}</p>
+          </div>
+          <div>
+            <p>Email Address</p>
+            <p>{userData?.guarantor.phonenumber}</p>
+          </div>
+          <div>
+            <p>Relationship</p>
+            <p>{userData?.guarantor.relationship}</p>
+          </div>
+        </div>
+
+        {/* {userData.guarantor.map((guarantor, index) => (
           <div className="content-details guarantors" key={index}>
             <div>
               <p>Full Name</p>
@@ -140,7 +162,7 @@ const TabContent: React.FC<{ userData: UserDetailsDataProps }> = ({
               <p>{guarantor.relationship}</p>
             </div>
           </div>
-        ))}
+        ))} */}
       </div>
     </div>
   );

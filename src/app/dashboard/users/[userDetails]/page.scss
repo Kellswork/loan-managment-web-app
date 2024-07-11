@@ -11,6 +11,9 @@
     align-items: center;
     gap: 12px;
   }
+  a.back-btn {
+    text-decoration: none;
+  }
 
   .user-btn-actions {
     display: flex;
@@ -21,7 +24,7 @@
       display: flex;
       gap: 20px;
       width: 50%;
-      justify-content: end;
+      justify-content: flex-end;
     }
 
     .btn {
@@ -37,6 +40,12 @@
       text-transform: uppercase;
       text-align: center;
       background-color: transparent;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+    }
+    .btn:hover {
+      opacity: 0.8;
     }
 
     .blacklist {
@@ -45,10 +54,26 @@
       color: rgba(228, 3, 59, 1);
     }
 
+    .blacklist:hover {
+      background-color: rgba(228, 3, 59, 0.1); /* Light background on hover */
+    }
+  
+    .blacklist:active {
+      transform: translateY(1px); /* Example: Slight downward shift on click */
+    }
+
     .active {
       @extend .btn;
       border: 1px solid rgba(57, 205, 204, 1);
       color: rgba(57, 205, 204, 1);
+    }
+
+    .active:hover {
+      background-color: rgba(57, 205, 204, 0.1); /* Light background on hover */
+    }
+  
+    .active:active {
+      transform: translateY(1px); /* Example: Slight downward shift on click */
     }
   }
 }
