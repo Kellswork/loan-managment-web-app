@@ -34,7 +34,7 @@ export const StoreContextProvider: React.FC<{
           type: ActionTypes.FETCH_DATA_SUCCESS,
           payload: storedDataParsed,
         });
-        console.log("fetched from local storage", storedDataString);
+        console.log("fetched from local storage");
       } else if (Array.isArray(data)) {
         dispatch({
           type: ActionTypes.FETCH_DATA_SUCCESS,

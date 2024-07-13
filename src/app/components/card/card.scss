@@ -36,6 +36,64 @@
 
     text-transform: uppercase;
     color: rgba(84, 95, 125, 1);
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 1024px) {
+    gap: 15px;
+
+    margin: 30px auto;
+
+    .card-item {
+      font-size: 12px;
+      padding: 16px;
+    }
+
+    .card-item p {
+      &:last-child {
+        font-size: 20px;
+        line-height: 24px;
+      }
+    }
+  }
+  @media (max-width: 745px) {
+    flex-wrap: wrap;
+    .card-item {
+      max-width: 200px;
+    }
+  }
+
+  @media (max-width: 466px) {
+    justify-content: space-between;
+    margin: 16px auto;
+    .card-item {
+      max-width: 160px;
+      height: auto;
+      font-size: 10px;
+    }
+    .card-item p {
+      &:last-child {
+        font-size: 16px;
+        line-height: 18.77px;
+      }
+    }
+  }
+  @media (max-width: 388px) {
+    .card-item {
+      max-width: 142px;
+      margin-bottom: 10px;
+      height: auto;
+    }
+  }
+  @media (max-width: 339px) {
+    .card-item {
+      max-width: 120px;
+    }
+  }
+  @media (max-width: 290px) {
+    .card-item {
+      max-width: 110px;
+    }
   }
 }
 

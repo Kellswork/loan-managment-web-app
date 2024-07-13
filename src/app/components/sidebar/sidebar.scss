@@ -3,7 +3,7 @@
 .sidebar-container {
   font-family: "Work Sans", sans-serif;
   background-color: white;
-  width: 283px;
+  flex-shrink: 0;
   .sidebar-org {
     display: flex;
     align-items: center;
@@ -82,4 +82,10 @@
   text-decoration: none;
 
 
+}
+
+@media (max-width: 1290px) {
+  .sidebar-container {
+    display: none;
+  }
 }

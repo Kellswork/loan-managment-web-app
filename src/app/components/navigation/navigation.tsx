@@ -11,8 +11,8 @@ function Nav() {
       <div className="search-links-container">
         <SearchBox />
         <div className="nav-links">
-          <p>Docs</p>
-          <div>
+          <p className="nav-links-docs">Docs</p>
+          <div className="nav-links-bell">
             <Image
               className="notification-bell"
               src="/notification-bell.svg"

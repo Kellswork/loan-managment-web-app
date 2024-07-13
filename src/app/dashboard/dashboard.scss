@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 
 .dashboard-container {
   font-family: "Work Sans", sans-serif;
@@ -8,9 +8,9 @@
   font-family: "Work Sans";
 
   main {
-  flex-grow: 1;
-  background: rgba(251, 251, 251, 1);
-  margin: 0 24px;
+    flex-grow: 1;
+    background: rgba(251, 251, 251, 1);
+    margin: 0 24px;
   }
 
   .card-table-layout {
@@ -24,6 +24,19 @@
       line-height: 28.15px;
       color: rgba(33, 63, 125, 1);
       font-weight: 500;
+    }
+  }
+}
+@media (max-width: 1024px) {
+  .dashboard-container-main {
+    width: 88%;
+  }
+}
+
+@media (max-width: 767px) {
+  .dashboard-container {
+    .card-table-layout {
+      margin-top: 40px;
     }
   }
 }
