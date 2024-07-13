@@ -18,7 +18,7 @@ export default function DashboardLayout({
     <Nav/>
       <div className="dashboard-container">
         <Sidebar />
-        <main>{children}</main>
+        <main className="dashboard-container-main">{children}</main>
       </div>
     </>
   );

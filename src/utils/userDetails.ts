@@ -76,6 +76,7 @@ export interface UserDetailsDataProps {
   }[];
 }
 
+//TODO: to be deleted
 export const userDetailsData:UserDetailsDataProps = {
   personalInformation: {
     fullName: "Grace Effiom",
@@ -102,12 +103,6 @@ export const userDetailsData:UserDetailsDataProps = {
     instagram: "@grace_effiom"
   },
   guarantors: [
-    {
-      fullName: "Debby Ogana",
-      phoneNumber: "07060780922",
-      emailAddress: "debby@gmail.com",
-      relationship: "Sister"
-    },
     {
       fullName: "Debby Ogana",
       phoneNumber: "07060780922",

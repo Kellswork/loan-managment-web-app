@@ -1,0 +1,147 @@
+.user-header-back-link {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-bottom: 40px;
+
+  .back-btn {
+    color: rgba(84, 95, 125, 1);
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  a.back-btn {
+    text-decoration: none;
+  }
+
+  .user-btn-actions {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    .action-btn-group {
+      display: flex;
+      gap: 20px;
+      width: 50%;
+      justify-content: flex-end;
+    }
+
+    .btn {
+      max-width: 170px;
+      width: 100%;
+      padding: 12px;
+      font-family: Work Sans;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 16.42px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-align: center;
+      background-color: transparent;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+    }
+    .btn:hover {
+      opacity: 0.8;
+    }
+
+    .blacklist {
+      @extend .btn;
+      border: 1px solid rgba(228, 3, 59, 1);
+      color: rgba(228, 3, 59, 1);
+    }
+
+    .blacklist:hover {
+      background-color: rgba(228, 3, 59, 0.1); /* Light background on hover */
+    }
+  
+    .blacklist:active {
+      transform: translateY(1px); /* Example: Slight downward shift on click */
+    }
+
+    .active {
+      @extend .btn;
+      border: 1px solid rgba(57, 205, 204, 1);
+      color: rgba(57, 205, 204, 1);
+    }
+
+    .active:hover {
+      background-color: rgba(57, 205, 204, 0.1); /* Light background on hover */
+    }
+  
+    .active:active {
+      transform: translateY(1px); /* Example: Slight downward shift on click */
+    }
+  }
+}
+
+.user-details-tab-container {
+  .user-details-card {
+    display: flex;
+    background-color: white;
+    padding: 40px;
+  }
+    .user-avatar-name-id {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .user-name-id {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 10px;
+
+      h3 {
+        font-size: 22px;
+        color:  rgb(33, 63, 125)
+      }
+      p {
+        font-size: 14px;
+        color: rgb(84 95 125);
+      }
+
+    }
+
+    .vertical-line {
+      width: 1px;
+      background-color: rgb(33, 63, 125);
+      margin: 0 32px;
+      opacity: 0.3
+    }
+    .user-ratings {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+
+      h3 {
+        color: rgb(33, 63, 125);
+        opacity: 0.8
+      }
+    }
+
+    .user-acc-details {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 10px;
+     
+
+      h3 {
+        font-size: 24px;
+       color:  rgb(33, 63, 125)
+      }
+      p {
+        font-size: 12px;
+        color:  rgb(33, 63, 125)
+      }
+    }
+
+}

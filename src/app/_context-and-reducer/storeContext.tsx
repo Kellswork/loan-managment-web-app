@@ -21,32 +21,36 @@ export const StoreContextProvider: React.FC<{
     const getUserData = async () => {
       dispatch({ type: ActionTypes.FETCH_DATA_REQUEST });
       const data = await fetchUsersData();
-   
+
       // fetch appData from local storage
-      const storedData = localStorage.getItem("appData");
+      const storedDataString = localStorage.getItem("appData") as string;
       // if no data, the fech data from fetchuserdata
-      if (storedData) {
+
+      const storedDataParsed = JSON.parse(storedDataString);
+
+      if (Array.isArray(storedDataParsed) && storedDataParsed.length > 0) {
+        // const storedDataParsed
         dispatch({
           type: ActionTypes.FETCH_DATA_SUCCESS,
-          payload: JSON.parse(storedData),
+          payload: storedDataParsed,
         });
-      }
-      if (!storedData) {
-        Array.isArray(data) &&
-          dispatch({
-            type: ActionTypes.FETCH_DATA_SUCCESS,
-            payload: data,
-          });
-
+        console.log("fetched from local storage");
+      } else if (Array.isArray(data)) {
+        dispatch({
+          type: ActionTypes.FETCH_DATA_SUCCESS,
+          payload: data,
+        });
+        console.log("fetched from api");
         localStorage.setItem("appData", JSON.stringify(data));
       }
 
       // if fetched data is a string and localstorage is empty
-      if (typeof data === "string" && !storedData) {
+      else if (typeof data === "string") {
         dispatch({
           type: ActionTypes.FETCH_DATA_FAILURE,
           payload: data,
         });
+        console.log("no fetched data");
       }
     };
 
@@ -64,6 +68,7 @@ export const StoreContextProvider: React.FC<{
         newStatus,
       },
     });
+    console.log(userId, newStatus, "updated");
   };
 
   const value = {

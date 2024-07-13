@@ -28,11 +28,13 @@
 .table-container {
   background-color: white;
   padding: 0 24px;
+  overflow-x: auto;
 
   .resp-table {
     width: 100%;
     margin: 0 auto;
     border-radius: 5px;
+    overflow-x: auto;
   }
 
   thead {
@@ -62,6 +64,7 @@
     line-height: 16.42px;
     font-family: "Work Sans", sans-serif;
     border-bottom: 1px solid rgba(33, 63, 125, 0.1);
+    white-space: nowrap;
   }
 
   tbody tr td:last-child {
@@ -106,5 +109,23 @@
         color: rgba(228, 3, 59, 1);
       }
     }
+  }
+}
+
+@media (max-width: 767px) {
+  .thead-username, .thead-phone, .table-item-phn, .table-item-username  {
+    display: none;
+  }
+}
+
+@media (max-width: 468px) {
+  .table-container-skeleton  {
+    display: none;
+  }
+  .mobile-table-container-skeleton {
+    display: block;
+  }
+  .table-container {
+    display:  none;
   }
 }

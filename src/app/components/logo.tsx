@@ -1,9 +1,11 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const Logo = () => {
   return (
-    <a href="/" rel="noopener noreferrer">
+    <Link href="/" rel="noopener noreferrer">
+      <div className="logo-container">
       <Image
         src="/lendsqr.svg"
         alt="Lendsqr Logo"
@@ -11,7 +13,8 @@ const Logo = () => {
         height={36}
         priority
       />
-    </a>
+      </div>
+    </Link>
   );
 };
 

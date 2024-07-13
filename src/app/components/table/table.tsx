@@ -1,16 +1,17 @@
 "use client";
 
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Image from "next/image";
 import "./table.scss";
 import { FilterCard } from "../card/FilterCard";
-import { UserDataProps } from "@/utils/userDetails";
 import Pagination from "../pagination/pagination";
 import { formatDate } from "@/utils/helpers";
 import { StoreContext } from "@/app/_context-and-reducer/storeContext";
 import { StatusCard } from "../card/statusCard";
 import { thead } from "@/utils/data";
 import TableSkeletonLoader from "./tableLoaderSkeleton";
+import MobileTable from "./mobileTable";
+import MobileTableSkeletonLoader from "./mobileTableSkeleton";
 
 const Table = () => {
   const { userData, updateUserStatus, error, loading } =
@@ -64,8 +65,18 @@ const Table = () => {
     : [];
 
   if (loading) {
-    return <TableSkeletonLoader />;
+    return (
+      <>
+        <div className="table-container-skeleton">
+          <TableSkeletonLoader />
+        </div>
+        <div className="mobile-table-container-skeleton">
+          <MobileTableSkeletonLoader />
+        </div>
+      </>
+    );
   }
+
   return (
     <>
       <div className="table-container">
@@ -73,7 +84,7 @@ const Table = () => {
           <thead>
             <tr>
               {thead.map((th) => (
-                <th key={th}>
+                <th key={th} className={`thead-${th}`}>
                   {th}
                   <span onClick={toggleFilter}>
                     <Image
@@ -98,11 +109,21 @@ const Table = () => {
             )}
             {currentUsersDisplayedOnTable.map((data) => (
               <tr key={data.general.user_id}>
-                <td>{data.personal_information.organization}</td>
-                <td>{data.personal_information.username}</td>
-                <td>{data.personal_information.email}</td>
-                <td>{data.personal_information.phone_number}</td>
-                <td>{formatDate(data.general.date_joined)}</td>
+                <td className="table-item-org">
+                  {data.personal_information.organization}
+                </td>
+                <td className="table-item-username">
+                  {data.personal_information.username}
+                </td>
+                <td className="table-item-email">
+                  {data.personal_information.email}
+                </td>
+                <td className="table-item-phn">
+                  {data.personal_information.phone_number}
+                </td>
+                <td className="table-item-date">
+                  {formatDate(data.general.date_joined)}
+                </td>
                 <td className="status">
                   <span
                     className={`status ${data.general.user_status.toLocaleLowerCase()}`}
@@ -137,6 +158,12 @@ const Table = () => {
           />
         ) : null}
       </div>
+
+      <MobileTable
+        data={currentUsersDisplayedOnTable}
+        onUpdateUserStatus={updateUserStatus!}
+      />
+
       <Pagination
         totalPages={totalPages}
         currentPage={currentPage}
