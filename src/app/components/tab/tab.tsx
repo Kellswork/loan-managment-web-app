@@ -24,7 +24,6 @@ const TabButtons = () => {
 const TabContent: React.FC<{ userData: UserDataProps | undefined }> = ({
   userData,
 }) => {
-  const [activeTab, setActiveTab] = useState<string>("General Details");
 
   return (
     <div className="tab-content">
