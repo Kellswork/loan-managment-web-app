@@ -1,22 +1,19 @@
 import React from "react";
 import Image from "next/image";
-import './starRating.scss'
+import "./starRating.scss";
 
 interface StarRatingProps {
-  rating: number; // Rating should be between 0 and 3
+  rating: number;
 }
 
 const StarRating: React.FC<StarRatingProps> = ({ rating }) => {
-  const maxRating = 3; // Maximum rating is 3
+  const maxRating = 3;
 
   const stars = Array.from({ length: maxRating });
 
   return (
     <div className="star-rating">
-      {stars.map((_, index) => {
-        console.log(index, rating)
-        return(
-      
+      {stars.map((_, index) => (
         <Image
           className="star-rating"
           key={index}
@@ -26,7 +23,7 @@ const StarRating: React.FC<StarRatingProps> = ({ rating }) => {
           height={24}
           priority
         />
-      )})}
+      ))}
     </div>
   );
 };
