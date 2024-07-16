@@ -101,6 +101,7 @@
     position: absolute;
     top: -7px;
     left: -6px;
+    cursor: pointer;
 
   }
   .sidebar-icon-container-hide {
@@ -109,6 +110,7 @@
     top: -7px;
     left: 220px;
     z-index: 200;
+    cursor: pointer;
   }
 
   .open {
