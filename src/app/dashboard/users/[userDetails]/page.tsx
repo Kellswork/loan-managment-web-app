@@ -24,7 +24,6 @@ function Page() {
   const userID = router.userDetails;
   // write the filter function
   const currentUser = userData.find((user) => user.general.user_id === userID);
-  console.log(currentUser);
   const truncateId = (id: string | undefined) => {
     if (id) return id.slice(0, 11);
   };

@@ -8,15 +8,12 @@ export const StatusCard = ({ top, left, userId, onUpdateUserStatus }: { top: num
 
   const handleBlacklist = () => {
     onUpdateUserStatus("Blacklisted");
-    console.log("Blacklisted was clicked")
   };
 
   const handleActivate = () => {
     onUpdateUserStatus("Active");
-    console.log("Active was clicked")
   };
 
-  console.log('he', userId)
 
   return (
     <div className="status-card-container" style={{ top: `${top}px`, left: `${left}px` }}>
