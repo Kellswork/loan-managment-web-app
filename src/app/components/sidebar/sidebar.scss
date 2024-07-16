@@ -84,8 +84,42 @@
 
 }
 
+.sidebar-icon-container, .sidebar-icon-container-hide {
+  display: none;
+}
+
+.open {
+  display: none;
+}
+
 @media (max-width: 1290px) {
   .sidebar-container {
+    display: none;
+  }
+  .sidebar-icon-container {
+    display: block;
+    position: absolute;
+    top: -7px;
+    left: -6px;
+
+  }
+  .sidebar-icon-container-hide {
+    display: block;
+    position: absolute;
+    top: -7px;
+    left: 220px;
+    z-index: 200;
+  }
+
+  .open {
+    display: block;
+    position: absolute;
+    z-index: 100;
+    height: calc(100vh - 100px);
+    overflow: scroll;
+  }
+
+  .hide-icon {
     display: none;
   }
 }
