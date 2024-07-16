@@ -7,6 +7,7 @@ import { Tabs } from "@/app/components/tab/tab";
 import { StoreContext } from "@/app/_context-and-reducer/storeContext";
 import Link from "next/link";
 import { Alert } from "@/app/components/alert/alert";
+import StarRating from "@/app/components/starRating/starRating";
 
 function Page() {
   // fetc data list and update status fiunction
@@ -23,7 +24,6 @@ function Page() {
   const userID = router.userDetails;
   // write the filter function
   const currentUser = userData.find((user) => user.general.user_id === userID);
-  console.log(currentUser);
   const truncateId = (id: string | undefined) => {
     if (id) return id.slice(0, 11);
   };
@@ -100,7 +100,7 @@ function Page() {
           <div className="vertical-line"></div>
           <div className="user-ratings">
             <h3>User’s Tier</h3>
-            <p>{currentUser?.general.user_tier}</p>
+            <p><StarRating rating={3}/></p>
           </div>
           <div className="vertical-line"></div>
           <div className="user-acc-details">

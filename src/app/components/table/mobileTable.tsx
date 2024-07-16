@@ -17,12 +17,10 @@ const MobileTable = ({
 }) => {
   const handleBlacklist = (userID: string) => {
     onUpdateUserStatus(userID, "Blacklisted");
-    console.log("Blacklisted in mobile card was clicked");
   };
 
   const handleActivate = (userID: string) => {
     onUpdateUserStatus(userID, "Active");
-    console.log("Active in mobile card was clicked");
   };
 
   return (
