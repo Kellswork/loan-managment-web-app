@@ -1,11 +1,11 @@
-import "./mobileTable.scss"; // Ensure this import path is correct
 import { UserDataProps } from "@/utils/userDetails";
-import "./mobileTable.scss";
+
 import Link from "next/link";
 import Image from "next/image";
-import { formatDate } from "@/utils/helpers";
-``;
-const MobileTable = ({
+import formatDate from "@/utils/helpers";
+import "./mobileTable.scss";
+
+function MobileTable({
   data,
   onUpdateUserStatus,
 }: {
@@ -14,7 +14,7 @@ const MobileTable = ({
     userId: string,
     newStatus: "Blacklisted" | "Active"
   ) => void;
-}) => {
+}) {
   const handleBlacklist = (userID: string) => {
     onUpdateUserStatus(userID, "Blacklisted");
   };
@@ -77,7 +77,7 @@ const MobileTable = ({
               <span>View</span>
             </Link>
             <div
-              onClick={() => handleBlacklist(row.general.user_id)}
+              onClick={() =>{ handleBlacklist(row.general.user_id)}}
               className="mobile-card-option blacklist"
             >
               <Image
@@ -90,7 +90,7 @@ const MobileTable = ({
               <span>Blacklist</span>
             </div>
             <div
-              onClick={() => handleActivate(row.general.user_id)}
+              onClick={() => {handleActivate(row.general.user_id)}}
               className="mobile-card-option activate"
             >
               <Image
@@ -107,6 +107,6 @@ const MobileTable = ({
       ))}
     </div>
   );
-};
+}
 
 export default MobileTable;

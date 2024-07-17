@@ -6,6 +6,7 @@
   },
   "extends": [
     "airbnb",
+    "airbnb-typescript",
     "airbnb/hooks",
     "prettier",
     "plugin:@typescript-eslint/strict-type-checked",
@@ -23,15 +24,16 @@
     ]
   },
   "rules": {
-    "eslint-plugin-import/extensions": "never",
-    "react/jsx-filename-extension": [
-      2,
+
+    "import/extensions": [
+      "error",
+      "ignorePackages",
       {
-        "extensions": [
-          ".ts",
-          ".tsx"
-        ]
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
       }
-    ]
+   ]
   }
 }

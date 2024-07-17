@@ -1,12 +1,13 @@
 "use client";
+
 import React, { useState } from "react";
 import Image from "next/image";
-import { sidebarData } from "../../../utils/data";
-import "./sidebar.scss";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import { sidebarData } from "../../../utils/data";
+import "./sidebar.scss";
 
-const TextIcon = ({
+function TextIcon({
   text,
   icon,
   alt,
@@ -18,21 +19,23 @@ const TextIcon = ({
   alt: string;
   link: string;
   classname?: string;
-}) => (
-  <Link href={`${link}`} className={`sidebar-text-icon ${classname || ""}`}>
-    <Image
-      className="sidebar-icon"
-      src={`/sidebar/${icon}`}
-      alt={alt}
-      width={16}
-      height={16}
-      priority
-    />
-    <span>{text}</span>
-  </Link>
-);
+}) {
+  return (
+    <Link href={link} className={`sidebar-text-icon ${classname || ""}`}>
+      <Image
+        className="sidebar-icon"
+        src={`/sidebar/${icon}`}
+        alt={alt}
+        width={16}
+        height={16}
+        priority
+      />
+      <span>{text}</span>
+    </Link>
+  );
+}
 
-const Sidebar = () => {
+function Sidebar() {
   const pathname = usePathname();
   const router = useRouter();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -123,7 +126,7 @@ const Sidebar = () => {
                   <TextIcon
                     text={link.name}
                     icon={link.icon}
-                    alt={link.name + " svg icon"}
+                    alt={`${link.name} svg icon`}
                     link={link.link}
                   />
                 </li>
@@ -144,6 +147,6 @@ const Sidebar = () => {
       </aside>
     </>
   );
-};
+}
 
 export default Sidebar;

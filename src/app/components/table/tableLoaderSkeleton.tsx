@@ -8,7 +8,7 @@ import 'react-loading-skeleton/dist/skeleton.css'
 
 
 
-const TableSkeletonLoader= () => {
+function TableSkeletonLoader() {
   return (
     <div className="table-container">
       <table className="resp-table">
@@ -32,13 +32,13 @@ const TableSkeletonLoader= () => {
         </thead>
         <tbody>
           {Array.from({ length: 9 }).map((_, i) => (
-            <tr key={`loading-${i}`}>
-              <td><Skeleton width={'70%'} height={20}/></td>
-              <td><Skeleton width={'70%'} height={20}/></td>
-              <td><Skeleton width={'70%'} height={20}/></td>
-              <td><Skeleton width={'70%'} height={20}/></td>
-              <td><Skeleton width={'70%'} height={20}/></td>
-              <td><Skeleton width={'70%'} height={20}/></td>
+            <tr key={Date.now()+i}>
+              <td><Skeleton width="70%" height={20}/></td>
+              <td><Skeleton width="70%" height={20}/></td>
+              <td><Skeleton width="70%" height={20}/></td>
+              <td><Skeleton width="70%" height={20}/></td>
+              <td><Skeleton width="70%" height={20}/></td>
+              <td><Skeleton width="70%" height={20}/></td>
               <td>
                 <Image
                   src="/eclipse.svg"
@@ -54,6 +54,6 @@ const TableSkeletonLoader= () => {
       </table>
     </div>
   );
-};
+}
 
 export default TableSkeletonLoader;

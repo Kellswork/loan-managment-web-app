@@ -1,9 +1,9 @@
 import "./card.scss";
 
-export const FilterCard = ({ top, left }: { top: number; left: number }) => (
-  <div
+ function FilterCard({ top, left }: { top: number; left: number }) {
+  return <div
     className="filter-card-container"
-    style={{ top: `${top}px`, left: `${left}px` }}
+    style={{ top:`${top}px`, left: `${left}px` }}
   >
     <form className="flex-container">
       <div className="form-fields">
@@ -41,9 +41,11 @@ export const FilterCard = ({ top, left }: { top: number; left: number }) => (
         </div>
       </div>
       <div className="form-field-btn-group">
-        <button className="btn outline">Reset</button>
-        <button className="btn filled">Filter</button>
+        <button type="submit" className="btn outline">Reset</button>
+        <button type="submit" className="btn filled">Filter</button>
       </div>
     </form>
   </div>
-);
+}
+
+export default FilterCard;

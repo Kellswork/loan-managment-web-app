@@ -2,11 +2,10 @@ import React from "react";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
-const MobileTableSkeletonLoader = () => {
-  return (
-    <div className="mobile-table">
-      {Array.from({ length: 3 }).map((_, i) => (
-        <div key={`loading-${i}`} className="mobile-card">
+function MobileTableSkeletonLoader() {
+  return <div className="mobile-table">
+      {Array.from({ length: 3 }).map((_,i) => (
+        <div key={Date.now()+ i} className="mobile-card">
           <div className="mobile-card-row">
             <div className="mobile-card-header">Organization</div>
             <div className="mobile-card-value">
@@ -46,7 +45,6 @@ const MobileTableSkeletonLoader = () => {
         </div>
       ))}
     </div>
-  );
-};
+}
 
 export default MobileTableSkeletonLoader;

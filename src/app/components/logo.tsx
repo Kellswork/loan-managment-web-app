@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-const Logo = () => {
+function Logo() {
   return (
     <Link href="/" rel="noopener noreferrer">
       <div className="logo-container">
@@ -16,6 +16,6 @@ const Logo = () => {
       </div>
     </Link>
   );
-};
+}
 
 export default Logo;

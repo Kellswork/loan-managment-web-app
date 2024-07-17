@@ -1,10 +1,9 @@
-import React, { useContext } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import "./card.scss";
 
 
-export const StatusCard = ({ top, left, userId, onUpdateUserStatus }: { top: number; left: number; userId: string, onUpdateUserStatus: (newStatus: "Blacklisted" | "Active") => void }) => {
+ function StatusCard({ top, left, userId, onUpdateUserStatus }: { top: number; left: number; userId: string, onUpdateUserStatus: (newStatus: "Blacklisted" | "Active") => void }) {
 
   const handleBlacklist = () => {
     onUpdateUserStatus("Blacklisted");
@@ -45,3 +44,5 @@ export const StatusCard = ({ top, left, userId, onUpdateUserStatus }: { top: num
     </div>
   );
 }
+
+export default StatusCard;

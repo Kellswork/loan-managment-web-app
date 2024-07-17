@@ -1,7 +1,6 @@
 "use client";
 
-import { UserDataProps, UserDetailsDataProps } from "@/utils/userDetails";
-import React, { useState } from "react";
+import { UserDataProps} from "@/utils/userDetails";
 import "./tab.scss";
 
 interface TabsProps {

@@ -1,9 +1,8 @@
 import React from "react";
-import { Card } from "../../components/card/card";
+import Card  from "../../components/card/card";
 import Table from "../../components/table/table";
-import  MobileTable  from "@/app/components/table/mobileTable";
 
-async function Page() {
+ function Page() {
   return (
     <div className="card-table-layout">
       <h2>Users</h2>
