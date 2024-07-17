@@ -2,8 +2,8 @@ import React from "react";
 import Image from "next/image";
 import "./card.scss";
 
-export const Card = () => (
-  <div className="card-container">
+ function Card() {
+  return <div className="card-container">
     <div className="card-item">
       <Image
         src="/users-ellipse.svg"
@@ -49,7 +49,7 @@ export const Card = () => (
       <p>102,453</p>
     </div>
   </div>
-);
+}
 
 
-
+export default Card;

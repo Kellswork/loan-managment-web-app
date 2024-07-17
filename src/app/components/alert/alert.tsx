@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./alert.scss";
 
-export const Alert = ({color, statusText}:{color: string, statusText: string}) => {
+function Alert({color, statusText}:{color: string, statusText: string}) {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
@@ -9,16 +9,13 @@ export const Alert = ({color, statusText}:{color: string, statusText: string}) =
       setVisible(false);
     }, 60000); 
 
-    return () => clearTimeout(timer);
+    return () => {clearTimeout(timer)};
   }, []);
 
   const closeAlert = () => {
     setVisible(false);
   };
 
-  const showAlertVisibilty = () => {
-    setVisible(true);
-  }
 
   if (!visible) return null;
   return (
@@ -36,4 +33,6 @@ export const Alert = ({color, statusText}:{color: string, statusText: string}) =
       </span>
     </div>
   );
-};
+}
+
+export default Alert;

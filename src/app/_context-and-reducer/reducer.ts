@@ -1,5 +1,4 @@
 import { UserDataProps } from "@/utils/userDetails";
-import { MouseEventHandler } from "react";
 
 export interface State {
   userData: UserDataProps[];
@@ -55,7 +54,7 @@ export const storeReducer = (state: State, action: Action) => {
       };
     case ActionTypes.UPDATE_USER_STATUS:
       const updatedUserData =  state.userData.map((user: UserDataProps) => {
-        if (user.general.user_id == action.payload.userId) {
+        if (user.general.user_id === action.payload.userId) {
           return {
             ...user,
             general: {

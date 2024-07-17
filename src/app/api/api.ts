@@ -1,6 +1,6 @@
 import { UserDataProps } from "@/utils/userDetails";
 
-export const fetchUsersData = async () => {
+const fetchUsersData = async () => {
   try {
     const response = await fetch(
       "https://run.mocky.io/v3/53964ef3-7f9b-407f-9e65-30e40d79782c",
@@ -12,9 +12,7 @@ export const fetchUsersData = async () => {
     const responseData = (await response.json()) as UserDataProps[];
 
     const users = responseData
-      .reduce((acc: UserDataProps[], curr: UserDataProps) => {
-        return acc.concat(curr);
-      }, [])
+      .reduce((acc: UserDataProps[], curr: UserDataProps) => acc.concat(curr), [])
       .slice(0, 199);
     return users;
   } catch (error) {
@@ -23,9 +21,9 @@ export const fetchUsersData = async () => {
   }
 };
 
-
+export default fetchUsersData;
 
 // https://run.mocky.io/v3/022c5272-7dc8-44ac-aecd-8c52eaec579b
-//use for testing error response 
+// use for testing error response 
 
 // working api : https://run.mocky.io/v3/53964ef3-7f9b-407f-9e65-30e40d79782c

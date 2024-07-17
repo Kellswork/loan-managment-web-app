@@ -2,13 +2,13 @@ import React from "react";
 import "./searchBox.scss";
 import Image from "next/image";
 
-const SearchBox = () => {
+function SearchBox() {
   return (
     <div className="search-container">
       <form>
         <input type="search" placeholder="Search for anything" />
         <div  className="search-btn-container">
-          <button className="search-btn">
+          <button type="submit" className="search-btn">
           <Image
           className="search-icon"
             src="/search-icon.svg"
@@ -22,6 +22,6 @@ const SearchBox = () => {
       </form>
     </div>
   );
-};
+}
 
 export default SearchBox;

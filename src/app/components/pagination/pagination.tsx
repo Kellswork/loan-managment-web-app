@@ -1,5 +1,6 @@
 "use client";
-import React, { useState } from "react";
+
+import React from "react";
 import Image from "next/image";
 import "./pagination.scss";
 
@@ -11,14 +12,14 @@ interface PaginationProps {
   setCurrentPage: (page: number) => void;
 }
 
-const Pagination = ({
+function Pagination({
   totalPages,
   currentPage,
   setCurrentPage,
   totalUserData
-}: PaginationProps) => {
+}: PaginationProps) {
   const pageNumbers = [];
-  for (let i = 1; i <= totalPages; i++) pageNumbers.push(i);
+  for (let i = 1; i <= totalPages; i+=1) pageNumbers.push(i);
 
 
   // handl prev and next
@@ -35,7 +36,7 @@ const Pagination = ({
 
    // Handle page selection from dropdown
    const handlePageSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setCurrentPage(parseInt(e.target.value));
+    setCurrentPage(parseInt(e.target.value, 10));
   }
 
   return (
@@ -46,7 +47,7 @@ const Pagination = ({
         </p>
         <div className="pagination-picker">
           <select value={currentPage} onChange={handlePageSelect}>
-            {pageNumbers.map((pageNumber, index) => (
+            {pageNumbers.map((pageNumber) => (
               <option key={pageNumber} value={pageNumber}>
                 {pageNumber}
               </option>
@@ -65,7 +66,7 @@ const Pagination = ({
       </div>
 
       <div className="pagination-row">
-        <div onClick={prevPage} className="arrow-background">
+        <div onClick={prevPage} className="arrow-background" aria-label="Previous Page">
           <Image
             src="/arrow_prev.svg"
             alt="previous icon for pagination navigation"
@@ -77,19 +78,19 @@ const Pagination = ({
 
         {
           <ul className="ul">
-            {pageNumbers.map((pageNumber, index) => {
+            {pageNumbers.map((pageNumber) => {
               if (
                 pageNumber === 1 ||
                 pageNumber === currentPage ||
-                pageNumber == totalPages ||
-                pageNumber == totalPages - 1 ||
+                pageNumber === totalPages ||
+                pageNumber === totalPages - 1 ||
                 (pageNumber >= currentPage - 3 && pageNumber <= currentPage + 3)
               ) {
                 return (
                   <li
                     className={pageNumber === currentPage ? "active" : ""}
                     key={pageNumber}
-                    onClick={() => setCurrentPage(pageNumber)}
+                    onClick={() => {setCurrentPage(pageNumber)}}
                   >
                     {pageNumber}
                   </li>
@@ -119,7 +120,7 @@ const Pagination = ({
       </div>
     </div>
   );
-};
+}
 
 export default Pagination;
 

@@ -76,7 +76,7 @@ export interface UserDetailsDataProps {
   }[];
 }
 
-//TODO: to be deleted
+// TODO: to be deleted
 export const userDetailsData:UserDetailsDataProps = {
   personalInformation: {
     fullName: "Grace Effiom",

@@ -1,19 +1,19 @@
 "use client";
 
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import Image from "next/image";
 import "./table.scss";
-import { FilterCard } from "../card/FilterCard";
-import Pagination from "../pagination/pagination";
-import { formatDate } from "@/utils/helpers";
+import formatDate from "@/utils/helpers";
 import { StoreContext } from "@/app/_context-and-reducer/storeContext";
-import { StatusCard } from "../card/statusCard";
 import { thead } from "@/utils/data";
+import FilterCard from "../card/FilterCard";
+import Pagination from "../pagination/pagination";
+import StatusCard from "../card/statusCard";
 import TableSkeletonLoader from "./tableLoaderSkeleton";
 import MobileTable from "./mobileTable";
 import MobileTableSkeletonLoader from "./mobileTableSkeleton";
 
-const Table = () => {
+function Table() {
   const { userData, updateUserStatus, error, loading } =
     useContext(StoreContext);
 
@@ -34,7 +34,7 @@ const Table = () => {
 
   const handleUpdateStatus = (newStatus: "Blacklisted" | "Active") => {
     if (selectedUserId) {
-      updateUserStatus && updateUserStatus(selectedUserId, newStatus);
+      if (updateUserStatus) updateUserStatus(selectedUserId, newStatus);
       setSelectedUserId("");
       setShowCard(!showCard);
     }
@@ -63,6 +63,7 @@ const Table = () => {
   const currentUsersDisplayedOnTable = Array.isArray(userData)
     ? userData.slice(startIndex, endIndex)
     : [];
+  console.log(error);
 
   if (loading) {
     return (
@@ -132,7 +133,9 @@ const Table = () => {
                   </span>
                 </td>
                 <td
-                  onClick={(event) => toggleCard(event, data.general.user_id)}
+                  onClick={(event) => {
+                    toggleCard(event, data.general.user_id);
+                  }}
                 >
                   <Image
                     src="/eclipse.svg"
@@ -152,7 +155,7 @@ const Table = () => {
         {showCard ? (
           <StatusCard
             onUpdateUserStatus={handleUpdateStatus}
-            userId={selectedUserId!}
+            userId={selectedUserId}
             top={cardPosition.y}
             left={cardPosition.x}
           />
@@ -172,6 +175,6 @@ const Table = () => {
       />
     </>
   );
-};
+}
 
 export default Table;

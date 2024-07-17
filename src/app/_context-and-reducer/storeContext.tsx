@@ -1,31 +1,29 @@
 "use client";
-import React, { createContext, useEffect, useReducer } from "react";
+
+import React, { createContext, useEffect, useMemo, useReducer } from "react";
 import {
   initialState,
   State,
   storeReducer as reducer,
   ActionTypes,
-  UpdateUserStatusAction,
 } from "./reducer";
-import { fetchUsersData } from "../api/api";
-import { UserDataProps } from "@/utils/userDetails";
+import fetchUsersData  from "../api/api";
 
 export const StoreContext = createContext<State>(initialState);
 
-export const StoreContextProvider: React.FC<{
-  children?: React.ReactNode;
-}> = ({ children }) => {
+export function StoreContextProvider({ children }: {  children: React.ReactNode}) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
     const getUserData = async () => {
       dispatch({ type: ActionTypes.FETCH_DATA_REQUEST });
       const data = await fetchUsersData();
+      console.log('dfet', data)
 
       // fetch appData from local storage
       const storedDataString = localStorage.getItem("appData") as string;
       // if no data, the fech data from fetchuserdata
-
+      console.log('localstorage', data)
       const storedDataParsed = JSON.parse(storedDataString);
 
       if (Array.isArray(storedDataParsed) && storedDataParsed.length > 0) {
@@ -70,13 +68,13 @@ export const StoreContextProvider: React.FC<{
     });
     console.log(userId, newStatus, "updated");
   };
-
-  const value = {
+// use memo to prevent the value object form changing on every re-render
+  const value =useMemo(() => ({
     userData: state.userData,
     error: state.error,
     loading: state.loading,
     updateUserStatus,
-  };
+  }), [state.userData, state.error, state.loading]);
 
   return (
     <StoreContext.Provider value={value}>{children}</StoreContext.Provider>

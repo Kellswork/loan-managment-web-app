@@ -1,4 +1,4 @@
-export const formatDate = (dateJoined:string) => new Date(dateJoined).toLocaleDateString(
+ const formatDate = (dateJoined:string) => new Date(dateJoined).toLocaleDateString(
   "en-US",
   {
     month: "short", // This will abbreviate the month
@@ -9,3 +9,4 @@ export const formatDate = (dateJoined:string) => new Date(dateJoined).toLocaleDa
     hour12: true, // Use 12-hour format
   }
 )
+export default formatDate;

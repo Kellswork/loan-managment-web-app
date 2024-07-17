@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useContext, useState } from "react";
 import { useParams } from "next/navigation";
 import Image from "next/image";
@@ -6,7 +7,7 @@ import "./page.scss";
 import { Tabs } from "@/app/components/tab/tab";
 import { StoreContext } from "@/app/_context-and-reducer/storeContext";
 import Link from "next/link";
-import { Alert } from "@/app/components/alert/alert";
+import Alert from "@/app/components/alert/alert";
 import StarRating from "@/app/components/starRating/starRating";
 
 function Page() {
@@ -25,33 +26,44 @@ function Page() {
   // write the filter function
   const currentUser = userData.find((user) => user.general.user_id === userID);
   const truncateId = (id: string | undefined) => {
-    if (id) return id.slice(0, 11);
+    if (!id) return "";
+    return id.slice(0, 11);
   };
 
   const handleUpdateStatus = (newStatus: "Blacklisted" | "Active") => {
-    updateUserStatus && updateUserStatus(userID, newStatus);
+    if (!updateUserStatus) return;
+    updateUserStatus(userID, newStatus);
 
-    let text: string = "";
-    let color: string = "";
+    let text = "";
+    let color = "";
 
-    if (newStatus === "Blacklisted") {
-      text = "User successfully blacklisted!";
-      color = "red";
-    } else if (newStatus === "Active") {
-      text = "User successfully activated!";
-      color = "green";
+    switch (newStatus) {
+      case "Blacklisted":
+        text = "User successfully blacklisted!";
+        color = "red";
+        break;
+      case "Active":
+        text = "User successfully activated!";
+        color = "green";
+        break;
+      default:
+        text = "Unknown status. Update failed.";
+        color = "orange";
+        break;
     }
 
     setShowAlert({
       visible: true,
-      text: text,
-      color: color,
+      text,
+      color,
     });
   };
 
   return (
     <div className="card-table-layout">
-      {showAlert.visible && <Alert color={showAlert.color} statusText={showAlert.text} />}
+      {showAlert.visible && (
+        <Alert color={showAlert.color} statusText={showAlert.text} />
+      )}
       <div className="user-header-back-link">
         <Link href="/dashboard/users" className="back-btn">
           <Image
@@ -67,14 +79,20 @@ function Page() {
           <h2>Users Details</h2>
           <div className="action-btn-group">
             <button
+              type="button"
               className="btn blacklist"
-              onClick={() => handleUpdateStatus("Blacklisted")}
+              onClick={() => {
+                handleUpdateStatus("Blacklisted");
+              }}
             >
               blacklist user
             </button>
             <button
+              type="button"
               className="btn active"
-              onClick={() => handleUpdateStatus("Active")}
+              onClick={() => {
+                handleUpdateStatus("Active");
+              }}
             >
               activate user
             </button>
@@ -97,12 +115,14 @@ function Page() {
               <p>{truncateId(currentUser?.general.user_id)}</p>
             </div>
           </div>
-          <div className="vertical-line"></div>
+          <div className="vertical-line" />
           <div className="user-ratings">
             <h3>User’s Tier</h3>
-            <p><StarRating rating={3}/></p>
+            <p>
+              <StarRating rating={3} />
+            </p>
           </div>
-          <div className="vertical-line"></div>
+          <div className="vertical-line" />
           <div className="user-acc-details">
             <h3>₦{currentUser?.general.loan_amount}</h3>
             <p>9912345678/Providus Bank</p>
