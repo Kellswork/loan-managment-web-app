@@ -1,19 +1,18 @@
 # Work Left to be done
-<!-- 3. Persist state managemnt and save to local storage so when a user refershs the users table page, the data stays the same. -->
-13. Make folder updates and refractoring for clean well maintained code where neccesary
-14. add variables for reoccuring values
-15. calculate the actual values for the card
-10. Add unit test were neccesary, and intergration test and end to end test with cypress.
-11. Add documentation about the project, tools and technologies, features for the work done so far
-11. Add CI / CD badge.
 
-3. implement filter functionality on table data.
+5. Add documentation for project, check last discussion with chatgpt, start everything with the home/login page
+1. Make folder updates and refractoring for clean well maintained code where neccesary, update project structure
+2. update scss with avriableas and mixins to reduce repetitve code, check for unused css too
 
-10. Add unit test were neccesary, and intergration test and end to end test with cypress.
-11. Add CI / CD badge.
+3. Add unit test were neccesary, and intergration test and end to end test with cypress.
+4. Add CI / CD badge.
 
-11. Add documentation about the project, tools and technologies, features and work done.
+5. calculate the actual values for the card
+6. implement filter functionality on table data
+
+11. Add documentation about the project, features and work done, why you used these tols and technologies.
 9. Host application on Vercel.
+
 
 
 How to generate mock data
