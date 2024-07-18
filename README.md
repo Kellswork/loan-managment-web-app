@@ -1,9 +1,8 @@
 # LendMe Project Documentation
-A Financial service laon app dashbaord
+A Financial service loan management system
 
-[ badges]
 
-Deployed on vercel - 
+Deployed on Vercel - 
 
 ## Tools and Technologies:
 React
@@ -17,12 +16,12 @@ Context API and useReducer
 Testing
 Jest
 React Testing Library
-End -to - End Testing: Cypress or that new one for end to end 
+End-to-End Testing: Playwright
 
 ##  User Experience Features Implemented
 **Login**
 - Input Validation: Validates email format and minimum password length.
-- Password Visibility Toggle: Allows users to show/hide the password input.
+- Password Visibility Toggle: Users can show/hide the password input.
 - Error Handling: Displays error messages for invalid inputs.
 - Form Submission: Handles form submission, including disabling the button during loading.
 - Local Storage: Stores user details locally upon successful login.
@@ -31,16 +30,10 @@ End -to - End Testing: Cypress or that new one for end to end
 ## Get Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-- clone repository https://github.com/Kellswork/autocomplete-component.git 
+- clone repository https://github.com/Kellswork/.git 
 - Navigate to the project directory.
-- cd into the folder
+- CD into the folder
 - In your terminal, run `npm install` to install dependencies.
 - To run in development, `npm run dev`
-- check package.json fro build and production commands
+- check package.json for build and production commands
 
-## Run Tests
-
-## Run Test Coverage
-Achieved 70% test coverage
-
-run npm test -- --coverage to see test coverage
