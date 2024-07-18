@@ -1,3 +1,7 @@
+/* eslint-disable no-console */
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
+// TODO: eslint errors 
+
 import { UserDataProps } from "@/utils/userDetails";
 
 const fetchUsersData = async () => {

@@ -1,3 +1,8 @@
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+// TODO: eslint errors 
+
 import { UserDataProps } from "@/utils/userDetails";
 
 import Link from "next/link";

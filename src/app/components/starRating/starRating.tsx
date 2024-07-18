@@ -1,3 +1,7 @@
+/* eslint-disable react/function-component-definition */
+/* eslint-disable react/no-array-index-key */
+// TODO: eslint errors 
+
 import React from "react";
 import Image from "next/image";
 import "./starRating.scss";

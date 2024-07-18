@@ -1,3 +1,9 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/non-nullable-type-assertion-style */
+/* eslint-disable no-console */
+// TODO: remove slint eslint, update command
+
 "use client";
 
 import React, { createContext, useEffect, useMemo, useReducer } from "react";

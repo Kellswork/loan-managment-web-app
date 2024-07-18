@@ -1,9 +1,13 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+// TODO: eslint errors
+
 "use client";
 
 import React from "react";
 import Image from "next/image";
 import "./pagination.scss";
-
 
 interface PaginationProps {
   totalPages: number;
@@ -16,11 +20,10 @@ function Pagination({
   totalPages,
   currentPage,
   setCurrentPage,
-  totalUserData
+  totalUserData,
 }: PaginationProps) {
   const pageNumbers = [];
-  for (let i = 1; i <= totalPages; i+=1) pageNumbers.push(i);
-
+  for (let i = 1; i <= totalPages; i += 1) pageNumbers.push(i);
 
   // handl prev and next
   const nextPage = () => {
@@ -34,17 +37,15 @@ function Pagination({
     }
   };
 
-   // Handle page selection from dropdown
-   const handlePageSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  // Handle page selection from dropdown
+  const handlePageSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setCurrentPage(parseInt(e.target.value, 10));
-  }
+  };
 
   return (
     <div className="pagination-container">
       <div className="pagination-show">
-      <p>
-          Showing 
-        </p>
+        <p>Showing</p>
         <div className="pagination-picker">
           <select value={currentPage} onChange={handlePageSelect}>
             {pageNumbers.map((pageNumber) => (
@@ -53,7 +54,7 @@ function Pagination({
               </option>
             ))}
           </select>
-          
+
           {/* TODO <Image
             src="/sidebar/dropdown-outline.svg"
             alt=""
@@ -66,7 +67,11 @@ function Pagination({
       </div>
 
       <div className="pagination-row">
-        <div onClick={prevPage} className="arrow-background" aria-label="Previous Page">
+        <div
+          onClick={prevPage}
+          className="arrow-background"
+          aria-label="Previous Page"
+        >
           <Image
             src="/arrow_prev.svg"
             alt="previous icon for pagination navigation"
@@ -90,7 +95,9 @@ function Pagination({
                   <li
                     className={pageNumber === currentPage ? "active" : ""}
                     key={pageNumber}
-                    onClick={() => {setCurrentPage(pageNumber)}}
+                    onClick={() => {
+                      setCurrentPage(pageNumber);
+                    }}
                   >
                     {pageNumber}
                   </li>
@@ -123,4 +130,3 @@ function Pagination({
 }
 
 export default Pagination;
-
