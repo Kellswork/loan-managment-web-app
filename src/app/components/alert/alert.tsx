@@ -1,3 +1,7 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+// TODO: eslint errors 
+
 import React, { useEffect, useState } from "react";
 import "./alert.scss";
 

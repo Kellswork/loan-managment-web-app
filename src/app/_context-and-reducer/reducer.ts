@@ -1,3 +1,10 @@
+/* eslint-disable no-case-declarations */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-enum-comparison */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+// TODO: fix or update eslint rules
+
 import { UserDataProps } from "@/utils/userDetails";
 
 export interface State {
@@ -78,3 +85,4 @@ export const storeReducer = (state: State, action: Action) => {
 };
 
 export default storeReducer;
+

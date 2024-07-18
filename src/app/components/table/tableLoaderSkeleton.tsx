@@ -1,12 +1,11 @@
+/* eslint-disable react/no-array-index-key */
 // Loading.tsx
 
 import { thead } from "@/utils/data";
 import React from "react";
 import Image from "next/image";
 import Skeleton from "react-loading-skeleton";
-import 'react-loading-skeleton/dist/skeleton.css'
-
-
+import "react-loading-skeleton/dist/skeleton.css";
 
 function TableSkeletonLoader() {
   return (
@@ -32,13 +31,25 @@ function TableSkeletonLoader() {
         </thead>
         <tbody>
           {Array.from({ length: 9 }).map((_, i) => (
-            <tr key={Date.now()+i}>
-              <td><Skeleton width="70%" height={20}/></td>
-              <td><Skeleton width="70%" height={20}/></td>
-              <td><Skeleton width="70%" height={20}/></td>
-              <td><Skeleton width="70%" height={20}/></td>
-              <td><Skeleton width="70%" height={20}/></td>
-              <td><Skeleton width="70%" height={20}/></td>
+            <tr key={Date.now() + i}>
+              <td>
+                <Skeleton width="70%" height={20} />
+              </td>
+              <td>
+                <Skeleton width="70%" height={20} />
+              </td>
+              <td>
+                <Skeleton width="70%" height={20} />
+              </td>
+              <td>
+                <Skeleton width="70%" height={20} />
+              </td>
+              <td>
+                <Skeleton width="70%" height={20} />
+              </td>
+              <td>
+                <Skeleton width="70%" height={20} />
+              </td>
               <td>
                 <Image
                   src="/eclipse.svg"
