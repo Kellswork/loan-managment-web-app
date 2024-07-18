@@ -1,4 +1,4 @@
-# Lendsqr Project Documentation
+# LendMe Project Documentation
 A Financial service laon app dashbaord
 
 [ badges]
