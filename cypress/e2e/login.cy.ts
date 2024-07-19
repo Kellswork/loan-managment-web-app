@@ -1,5 +1,3 @@
-// cypress/integration/login.spec.js
-
 describe('Login Page', () => {
   beforeEach(() => {
     // Visit the home page

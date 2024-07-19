@@ -7,21 +7,24 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "cypress:open": "cypress open"
+    "cypress:open": "cypress open",
+    "report:coverage": "nyc report --reporter=html"
   },
   "dependencies": {
-    "eslint-config-airbnb-typescript": "^18.0.0",
+    "@istanbuljs/nyc-config-typescript": "1.0.2",
+    "eslint-config-airbnb-typescript": "18.0.0",
     "next": "14.2.3",
     "react": "18",
     "react-dom": "18",
     "react-loading-skeleton": "3.4.0"
   },
   "devDependencies": {
-    "@cypress/code-coverage": "^3.12.42",
+    "@cypress/code-coverage": "3.12.42",
     "@types/node": "20",
     "@types/react": "18",
     "@types/react-dom": "18",
     "@typescript-eslint/eslint-plugin": "7.8.0",
+    "babel-plugin-istanbul": "7.0.0",
     "cypress": "13.13.1",
     "eslint": "8.57.0",
     "eslint-config-airbnb": "19.0.4",
@@ -31,6 +34,7 @@
     "eslint-plugin-jsx-a11y": "6.8.0",
     "eslint-plugin-react": "7.34.1",
     "eslint-plugin-react-hooks": "4.6.2",
+    "istanbul": "0.4.5",
     "sass": "1.76.0",
     "typescript": "5"
   }

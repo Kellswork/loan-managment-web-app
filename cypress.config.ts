@@ -1,3 +1,7 @@
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable global-require */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-var-requires */
 import { defineConfig } from "cypress";
 
 export default defineConfig({
@@ -13,4 +17,13 @@ export default defineConfig({
       return config;
     },
   },
+  // env: {
+ 
+  // }
+  env: {
+    coverage: true,
+    "codeCoverage": {
+      "url": "/api/__coverage__"
+    }
+  }
 });
