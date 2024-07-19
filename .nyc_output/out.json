@@ -514,8 +514,8 @@
     },
     "s": {
       "0": 5,
-      "1": 10,
-      "2": 10,
+      "1": 8,
+      "2": 8,
       "3": 4,
       "4": 4,
       "5": 0,
@@ -526,7 +526,7 @@
       "10": 4
     },
     "f": {
-      "0": 10,
+      "0": 8,
       "1": 0
     },
     "b": {
@@ -1078,9 +1078,9 @@
       "0": 5,
       "1": 26,
       "2": 26,
-      "3": 10,
-      "4": 10,
-      "5": 10,
+      "3": 8,
+      "4": 8,
+      "5": 8,
       "6": 4,
       "7": 4,
       "8": 4,
@@ -1095,7 +1095,7 @@
       "17": 4,
       "18": 4,
       "19": 4,
-      "20": 10,
+      "20": 8,
       "21": 26,
       "22": 0,
       "23": 0,
@@ -1105,8 +1105,8 @@
     },
     "f": {
       "0": 26,
-      "1": 10,
-      "2": 10,
+      "1": 8,
+      "2": 8,
       "3": 0,
       "4": 22
     },
@@ -2255,6 +2255,52 @@
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
     "hash": "a5978f3be2a3606ef2efa2100bbb27c325499bda"
   },
+  "/Users/kells/Projects/lendsqr-frontend-assessment/src/utils/data.ts": {
+    "path": "/Users/kells/Projects/lendsqr-frontend-assessment/src/utils/data.ts",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 10,
+          "column": 21
+        },
+        "end": {
+          "line": 17,
+          "column": 1
+        }
+      },
+      "1": {
+        "start": {
+          "line": 19,
+          "column": 42
+        },
+        "end": {
+          "line": 142,
+          "column": 1
+        }
+      },
+      "2": {
+        "start": {
+          "line": 153,
+          "column": 41
+        },
+        "end": {
+          "line": 228,
+          "column": 1
+        }
+      }
+    },
+    "fnMap": {},
+    "branchMap": {},
+    "s": {
+      "0": 1,
+      "1": 1,
+      "2": 1
+    },
+    "f": {},
+    "b": {},
+    "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    "hash": "0542a209405820f6dc24eb30721aabdcb8bc0fc6"
+  },
   "/Users/kells/Projects/lendsqr-frontend-assessment/src/app/components/sidebar/sidebar.tsx": {
     "path": "/Users/kells/Projects/lendsqr-frontend-assessment/src/app/components/sidebar/sidebar.tsx",
     "statementMap": {
@@ -2898,6 +2944,68 @@
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
     "hash": "c01daa1a29ff0f1f37958b2157f946d253c8da14"
+  },
+  "/Users/kells/Projects/lendsqr-frontend-assessment/src/utils/helpers.ts": {
+    "path": "/Users/kells/Projects/lendsqr-frontend-assessment/src/utils/helpers.ts",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 1,
+          "column": 20
+        },
+        "end": {
+          "line": 11,
+          "column": 1
+        }
+      },
+      "1": {
+        "start": {
+          "line": 1,
+          "column": 43
+        },
+        "end": {
+          "line": 11,
+          "column": 1
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 1,
+            "column": 20
+          },
+          "end": {
+            "line": 1,
+            "column": 21
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 43
+          },
+          "end": {
+            "line": 11,
+            "column": 1
+          }
+        },
+        "line": 1
+      }
+    },
+    "branchMap": {},
+    "s": {
+      "0": 1,
+      "1": 0
+    },
+    "f": {
+      "0": 0
+    },
+    "b": {},
+    "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    "hash": "a683df36fad93304c1cb404a8f63a3b2fceff6ae"
   },
   "/Users/kells/Projects/lendsqr-frontend-assessment/src/app/components/card/FilterCard.tsx": {
     "path": "/Users/kells/Projects/lendsqr-frontend-assessment/src/app/components/card/FilterCard.tsx",
@@ -5250,24 +5358,6 @@
   },
   "/Users/kells/Projects/lendsqr-frontend-assessment/src/app/dashboard/users/[userDetails]/page.tsx": {
     "path": "/Users/kells/Projects/lendsqr-frontend-assessment/src/app/dashboard/users/[userDetails]/page.tsx",
-    "statementMap": {},
-    "fnMap": {},
-    "branchMap": {},
-    "s": {},
-    "f": {},
-    "b": {}
-  },
-  "/Users/kells/Projects/lendsqr-frontend-assessment/src/utils/data.ts": {
-    "path": "/Users/kells/Projects/lendsqr-frontend-assessment/src/utils/data.ts",
-    "statementMap": {},
-    "fnMap": {},
-    "branchMap": {},
-    "s": {},
-    "f": {},
-    "b": {}
-  },
-  "/Users/kells/Projects/lendsqr-frontend-assessment/src/utils/helpers.ts": {
-    "path": "/Users/kells/Projects/lendsqr-frontend-assessment/src/utils/helpers.ts",
     "statementMap": {},
     "fnMap": {},
     "branchMap": {},
