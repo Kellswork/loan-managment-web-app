@@ -1,10 +1,9 @@
 "use client";
 
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from "react";
-import "../page.scss";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import "../../page.scss";
 
 
 /**

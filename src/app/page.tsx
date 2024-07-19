@@ -1,6 +1,6 @@
 import "./page.scss";
 import Logo from "./components/logo";
-import Login from "./Login/login";
+import Login from "./pages/login/login";
 
 export default function Home() {
   return (
