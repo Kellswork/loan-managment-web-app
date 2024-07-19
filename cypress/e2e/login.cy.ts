@@ -14,13 +14,9 @@ describe('Login Page', () => {
   it('should validate email and password fields', () => {
     // Enter invalid email
     cy.get('input[name="email"]').type('invalidemail');
-    cy.get('input[name="password"]').type('123');
-    
-    // Submit the form
-    cy.get('form').submit();
-    
-    // Check for error messages
     cy.contains('Please enter a valid email address').should('be.visible');
+
+    cy.get('input[name="password"]').type('123');
     cy.contains('Password must be at least 4 characters long').should('be.visible');
   });
 
