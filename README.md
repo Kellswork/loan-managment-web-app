@@ -1,3 +1,5 @@
+[![tests](https://github.com/Kellswork/loan-managment-web-app/actions/workflows/main.yaml/badge.svg)](https://github.com/Kellswork/loan-managment-web-app/actions/workflows/main.yaml)
+
 # LendMe Project Documentation
 A Financial service loan management system
 

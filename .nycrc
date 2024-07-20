@@ -1,0 +1,17 @@
+{
+  "extends": "@istanbuljs/nyc-config-typescript",
+  "include": [
+    "src/app/**/*.ts",
+    "src/app/**/*.tsx",
+    "src/utils/**/*.ts",
+    "src/utils/**/*.tsx"
+  ],
+  "report-dir": "cypress-coverage",
+  "reporter": [
+    "text",
+    "html"
+  ],
+  "instrumenter": "nyc",
+  "sourceMap": false,
+  "all": true
+}

@@ -7,7 +7,7 @@ import { UserDataProps } from "@/utils/userDetails";
 const fetchUsersData = async () => {
   try {
     const response = await fetch(
-      "https://run.mocky.io/v3/53964ef3-7f9b-407f-9e65-30e40d79782c",
+      "https://run.mocky.io/v3/22d8a08a-7940-4f45-a0f8-37567e671dc8",
       { next: { revalidate: 3600 } }
     );
        if (!response.ok) {
@@ -30,4 +30,4 @@ export default fetchUsersData;
 // https://run.mocky.io/v3/022c5272-7dc8-44ac-aecd-8c52eaec579b
 // use for testing error response 
 
-// working api : https://run.mocky.io/v3/53964ef3-7f9b-407f-9e65-30e40d79782c
+// working api : https://run.mocky.io/v3/22d8a08a-7940-4f45-a0f8-37567e671dc8
