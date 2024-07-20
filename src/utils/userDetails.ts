@@ -1,47 +1,47 @@
 export interface UserDataProps {
   personal_information: {
-      organization: string;
-      username: string;
-      full_name: string;
-      phone_number: string;
-      email: string;
-      bvn: number;
-      gender: string;
-      marital_status: string;
-      children: number;
-      type_of_residence: string;
+    organization: string;
+    username: string;
+    full_name: string;
+    phone_number: string;
+    email: string;
+    bvn: number;
+    gender: string;
+    marital_status: string;
+    children: number;
+    type_of_residence: string;
   };
   education_and_employment: {
-      level_of_education: string;
-      employment_status: string;
-      sector_of_employment: string;
-      duration_of_employment: string;
-      monthly_income: {
-          lower: string;
-          upper: string;
-      };
-      loan_repayment: string;
+    level_of_education: string;
+    employment_status: string;
+    sector_of_employment: string;
+    duration_of_employment: string;
+    office_email: string;
+    monthly_income: {
+      lower: string;
+      upper: string;
+    };
+    loan_repayment: string;
   };
   socials: {
-      twitter: string;
-      facebook: string;
-      instagram: string;
+    twitter: string;
+    facebook: string;
+    instagram: string;
   };
   guarantor: {
-      full_name: string;
-      phonenumber: string;
-      email_address: string;
-      relationship: string;
+    full_name: string;
+    phonenumber: string;
+    email_address: string;
+    relationship: string;
   };
   general: {
-      user_id: string;
-      user_tier: number;
-      user_status: string;
-      loan_amount: string;
-      date_joined: string;
+    user_id: string;
+    user_tier: number;
+    user_status: string;
+    loan_amount: string;
+    date_joined: string;
   };
 }
-
 
 export interface UserDetailsDataProps {
   personalInformation: {
@@ -77,7 +77,7 @@ export interface UserDetailsDataProps {
 }
 
 // TODO: to be deleted
-export const userDetailsData:UserDetailsDataProps = {
+export const userDetailsData: UserDetailsDataProps = {
   personalInformation: {
     fullName: "Grace Effiom",
     phoneNumber: "07060780922",
@@ -86,7 +86,7 @@ export const userDetailsData:UserDetailsDataProps = {
     gender: "Female",
     maritalStatus: "Single",
     children: "None",
-    typeOfResidence: "Parent’s Apartment"
+    typeOfResidence: "Parent’s Apartment",
   },
   educationAndEmployment: {
     levelOfEducation: "B.Sc",
@@ -95,25 +95,25 @@ export const userDetailsData:UserDetailsDataProps = {
     durationOfEmployment: "2 years",
     officeEmail: "grace@lendsqr.com",
     monthlyIncome: "₦200,000.00 - ₦400,000.00",
-    loanRepayment: "40,000"
+    loanRepayment: "40,000",
   },
   socials: {
     twitter: "@grace_effiom",
     facebook: "Grace Effiom",
-    instagram: "@grace_effiom"
+    instagram: "@grace_effiom",
   },
   guarantors: [
     {
       fullName: "Debby Ogana",
       phoneNumber: "07060780922",
       emailAddress: "debby@gmail.com",
-      relationship: "Sister"
+      relationship: "Sister",
     },
     {
       fullName: "Debby Ogana",
       phoneNumber: "07060780922",
       emailAddress: "debby@gmail.com",
-      relationship: "Sister"
-    }
-  ]
+      relationship: "Sister",
+    },
+  ],
 };

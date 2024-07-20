@@ -88,7 +88,7 @@ const TabContent: React.FC<{ userData: UserDataProps | undefined }> = ({
         </div>
         <div>
           <p>Office Email</p>
-          <p />
+          <p>  {userData?.education_and_employment.office_email}</p>
         </div>
         <div>
           <p>Monthly Income</p>
