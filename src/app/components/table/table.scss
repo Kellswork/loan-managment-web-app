@@ -46,10 +46,13 @@
       text-align: start;
       padding: 20px 20px 20px 0px;
 
-      span {
+      button {
         display: inline-block;
         vertical-align: middle;
-        margin-left: 10px;
+    
+        border: none;
+        background-color: transparent;
+        padding: 0px 0px 0px 6px;
       }
     }
   }

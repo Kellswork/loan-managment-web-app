@@ -24,7 +24,6 @@
     ]
   },
   "rules": {
-
     "import/extensions": [
       "error",
       "ignorePackages",
@@ -34,7 +33,16 @@
         "ts": "never",
         "tsx": "never"
       }
-   ],
-   "jsx-a11y/label-has-associated-control": [0]
+    ],
+    "jsx-a11y/label-has-associated-control": [
+      0
+    ],
+    "@typescript-eslint/restrict-template-expressions": [
+      "error",
+      {
+        "allowNumber": true
+      }
+    ],
+    "react/require-default-props": [0]
   }
 }

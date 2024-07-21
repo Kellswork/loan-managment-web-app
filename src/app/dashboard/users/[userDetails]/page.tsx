@@ -4,7 +4,7 @@ import React, { useContext, useState } from "react";
 import { useParams } from "next/navigation";
 import Image from "next/image";
 import "./page.scss";
-import { Tabs } from "@/app/components/tab/tab";
+import  Tabs  from "@/app/components/tab/tab";
 import { StoreContext } from "@/app/_context-and-reducer/storeContext";
 import Link from "next/link";
 import Alert from "@/app/components/alert/alert";

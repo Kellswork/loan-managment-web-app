@@ -1,10 +1,3 @@
-/* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable react/require-default-props */
-// TODO: eslint errors 
-
 "use client";
 
 import React, { useState } from "react";
@@ -19,16 +12,22 @@ function TextIcon({
   icon,
   alt,
   link,
-  classname,
+  classname = "",
+  handleFunction = () => {},
 }: {
   text: string;
   icon: string;
   alt: string;
   link: string;
   classname?: string;
+  handleFunction?: () => void;
 }) {
   return (
-    <Link href={link} className={`sidebar-text-icon ${classname || ""}`}>
+    <Link
+      onClick={(event) => {event.preventDefault(); handleFunction()}}
+      href={link}
+      className={`sidebar-text-icon ${classname}`}
+    >
       <Image
         className="sidebar-icon"
         src={`/sidebar/${icon}`}
@@ -61,7 +60,8 @@ function Sidebar() {
   };
   return (
     <>
-      <div
+      <button
+        type="button"
         onClick={toggleSidebar}
         className={`sidebar-icon-container ${isSidebarOpen ? "hide-icon" : ""}`}
       >
@@ -73,8 +73,9 @@ function Sidebar() {
           height={40}
           priority
         />
-      </div>
-      <div
+      </button>
+      <button
+        type="button"
         onClick={toggleSidebar}
         className={`sidebar-icon-container-hide ${
           !isSidebarOpen ? "hide-icon" : ""
@@ -88,7 +89,7 @@ function Sidebar() {
           height={40}
           priority
         />
-      </div>
+      </button>
       <aside className={`sidebar-container ${isSidebarOpen ? "open" : ""}`}>
         <div className="sidebar-org">
           <Image
@@ -142,12 +143,13 @@ function Sidebar() {
           </div>
         ))}
         <hr />
-        <div className="sidebar-nav-links logout" onClick={handleLogout}>
+        <div className="sidebar-nav-links logout">
           <TextIcon
             link="#"
             text="Logout"
             icon="sign-out.svg"
             alt="logout link"
+            handleFunction={handleLogout}
           />
           <p>v1.2.0</p>
         </div>

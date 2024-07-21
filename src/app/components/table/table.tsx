@@ -1,8 +1,3 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-// TODO: eslint errors 
-
 "use client";
 
 import React, { useContext, useState } from "react";
@@ -18,6 +13,11 @@ import TableSkeletonLoader from "./tableLoaderSkeleton";
 import MobileTable from "./mobileTable";
 import MobileTableSkeletonLoader from "./mobileTableSkeleton";
 
+/**
+ * Renders the table displaying user data with various features.
+ *
+ * @returns {JSX.Element} The user data table.
+ */
 function Table() {
   const { userData, updateUserStatus, error, loading } =
     useContext(StoreContext);
@@ -28,6 +28,11 @@ function Table() {
   const [selectedUserId, setSelectedUserId] = useState("");
   const [cardPosition, setCardPosition] = useState({ x: 0, y: 0 });
 
+  /**
+   * Toggles the display of the filter card.
+   *
+   * @param {React.MouseEvent<HTMLSpanElement>} event The mouse event.
+   */
   const toggleFilter = (event: React.MouseEvent<HTMLSpanElement>) => {
     const filterCardWidth = 270;
     const filterPos = event.currentTarget.getBoundingClientRect();
@@ -37,6 +42,11 @@ function Table() {
     setShowFilter(!showFilter);
   };
 
+  /**
+   * Updates the status of a user.
+   *
+   * @param {"Blacklisted" | "Active"} newStatus The new status to set for the user.
+   */
   const handleUpdateStatus = (newStatus: "Blacklisted" | "Active") => {
     if (selectedUserId) {
       if (updateUserStatus) updateUserStatus(selectedUserId, newStatus);
@@ -45,6 +55,12 @@ function Table() {
     }
   };
 
+  /**
+   * Toggles the display of the status card.
+   *
+   * @param {React.MouseEvent<HTMLTableCellElement>} event The mouse event.
+   * @param {string} userId The ID of the user.
+   */
   const toggleCard = (
     event: React.MouseEvent<HTMLTableCellElement>,
     userId: string
@@ -91,7 +107,7 @@ function Table() {
               {thead.map((th) => (
                 <th key={th} className={`thead-${th}`}>
                   {th}
-                  <span onClick={toggleFilter}>
+                  <button type="button" onClick={toggleFilter}>
                     <Image
                       src="/filter-results-button.svg"
                       alt="filter results button"
@@ -99,7 +115,7 @@ function Table() {
                       height={16}
                       priority
                     />
-                  </span>
+                  </button>
                 </th>
               ))}
             </tr>
@@ -168,7 +184,7 @@ function Table() {
 
       <MobileTable
         data={currentUsersDisplayedOnTable}
-        onUpdateUserStatus={updateUserStatus!}
+        onUpdateUserStatus={updateUserStatus ?? (() => {})}
       />
 
       <Pagination

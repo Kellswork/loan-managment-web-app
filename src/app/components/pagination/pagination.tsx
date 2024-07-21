@@ -1,8 +1,3 @@
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-// TODO: eslint errors
-
 "use client";
 
 import React from "react";
@@ -16,6 +11,14 @@ interface PaginationProps {
   setCurrentPage: (page: number) => void;
 }
 
+/**
+ * Pagination component to navigate through pages of data.
+ * @param {number} totalPages - Total number of pages.
+ * @param {number} currentPage - Current active page.
+ * @param {number} totalUserData - Total number of user data items.
+ * @param {Function} setCurrentPage - Function to set the current page.
+ * @returns {JSX.Element} The rendered pagination component.
+ */
 function Pagination({
   totalPages,
   currentPage,
@@ -42,47 +45,52 @@ function Pagination({
     setCurrentPage(parseInt(e.target.value, 10));
   };
 
+  console.log(currentPage);
+
   return (
-    <div className="pagination-container">
+    <div
+      className="pagination-container"
+      role="navigation"
+      aria-label="Pagination Navigation"
+    >
       <div className="pagination-show">
         <p>Showing</p>
         <div className="pagination-picker">
-          <select value={currentPage} onChange={handlePageSelect}>
+          <select
+            aria-label="Select Page"
+            value={currentPage}
+            onChange={handlePageSelect}
+          >
             {pageNumbers.map((pageNumber) => (
               <option key={pageNumber} value={pageNumber}>
                 {pageNumber}
               </option>
             ))}
           </select>
-
-          {/* TODO <Image
-            src="/sidebar/dropdown-outline.svg"
-            alt=""
-            width={14}
-            height={14}
-            priority
-          /> */}
         </div>
         <p>out of {totalUserData}</p>
       </div>
 
       <div className="pagination-row">
-        <div
+        <button
+          disabled={currentPage === 1}
+          type="button"
           onClick={prevPage}
           className="arrow-background"
           aria-label="Previous Page"
         >
           <Image
-            src="/arrow_prev.svg"
+            src="/arrow_next.svg"
             alt="previous icon for pagination navigation"
             width={14}
             height={14}
             priority
+            className="prev-icon"
           />
-        </div>
+        </button>
 
         {
-          <ul className="ul">
+          <ul className="pagination-list" aria-live="polite">
             {pageNumbers.map((pageNumber) => {
               if (
                 pageNumber === 1 ||
@@ -92,15 +100,21 @@ function Pagination({
                 (pageNumber >= currentPage - 3 && pageNumber <= currentPage + 3)
               ) {
                 return (
-                  <li
-                    className={pageNumber === currentPage ? "active" : ""}
+                  <button
+                    type="button"
+                    aria-current="page"
+                    className={
+                      pageNumber === currentPage
+                        ? "pagination-page active"
+                        : "pagination-page"
+                    }
                     key={pageNumber}
                     onClick={() => {
                       setCurrentPage(pageNumber);
                     }}
                   >
                     {pageNumber}
-                  </li>
+                  </button>
                 );
               }
               // display elipse for pages not shown
@@ -115,15 +129,20 @@ function Pagination({
           </ul>
         }
 
-        <div onClick={nextPage} className="arrow-background">
+        <button
+          disabled={currentPage === totalPages}
+          type="button"
+          onClick={nextPage}
+          className="arrow-background"
+        >
           <Image
             src="/arrow_next.svg"
-            alt="previous icon for pagination navigation"
+            alt="next icon for pagination navigation"
             width={14}
             height={14}
             priority
           />
-        </div>
+        </button>
       </div>
     </div>
   );

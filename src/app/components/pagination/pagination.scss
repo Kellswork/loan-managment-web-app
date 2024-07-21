@@ -29,7 +29,7 @@
   }
 
   .pagination-row {
-    cursor: pointer;
+  
     display: flex;
     max-width: 262px;
     width: 100%;
@@ -44,21 +44,37 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      border: none;
+      cursor: pointer;
+
+      .prev-icon {
+        transform: rotate(180deg);
+
+      }
+      &:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+      }
     }
   }
 
-  ul {
+  .pagination-list {
     display: flex;
     width: 100%;
     justify-content: space-around;
 
-    li {
+    .pagination-page {
+      font-family: work sans;
       font-weight: 500;
-      font-size: 1 rem;
+      font-size: 1rem;
       line-height: 18.77px;
       color: rgba(84, 95, 125, 1);
       opacity: 60%;
-
+      cursor: pointer;
+      padding: 0;
+      margin: 0;
+      border: none;
+      background-color: transparent;
       &.active {
         opacity: 1;
       }
