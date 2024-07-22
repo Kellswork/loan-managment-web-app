@@ -1,10 +1,10 @@
 [![tests](https://github.com/Kellswork/loan-managment-web-app/actions/workflows/main.yaml/badge.svg)](https://github.com/Kellswork/loan-managment-web-app/actions/workflows/main.yaml)
 
-# LendMe Project Documentation
+# Project Documentation
 A Financial service loan management system
 
 
-Deployed on Vercel - 
+Deployed on Vercel - [loan-managment-app](https://loan-managment-app.vercel.app/)
 
 ## Tools and Technologies:
 React
@@ -15,12 +15,16 @@ Sass(SCSS)
 **State Management:**
 Context API and useReducer
 
-Testing
+**Testing**
 Jest
 React Testing Library
-End-to-End Testing: Playwright
+Cypress(End-to-End)
+
+**CI/CD**
+GitHub Actions
 
 ##  User Experience Features Implemented
+
 **Login / Home View**
 - Input Validation: Validates email format and minimum password length.
 - Password Visibility Toggle: Users can show/hide the password input.
@@ -37,6 +41,8 @@ End-to-End Testing: Playwright
 - Loading States: Displays skeleton loaders when data is being fetched.
 - Error Handling: Shows an error message when there is a problem fetching the data.
 - Pagination: Implements pagination to navigate through the user data table.
+
+**Dashbaord / Users / user-deatils view**
 
 ## Get Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
