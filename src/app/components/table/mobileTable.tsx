@@ -1,8 +1,3 @@
-/* eslint-disable react/no-array-index-key */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-// TODO: eslint errors 
-
 import { UserDataProps } from "@/utils/userDetails";
 
 import Link from "next/link";
@@ -30,8 +25,8 @@ function MobileTable({
 
   return (
     <div className="mobile-table">
-      {data.map((row, index) => (
-        <div key={index} className="mobile-card">
+      {data.map((row) => (
+        <div key={row.general.user_id} className="mobile-card">
           <div className="mobile-card-row">
             <div className="mobile-card-header">Organization</div>
             <div className="mobile-card-value">
@@ -81,7 +76,7 @@ function MobileTable({
               <Image src="/view.svg" alt="" width={16} height={16} priority />
               <span>View</span>
             </Link>
-            <div
+            <button type="button"
               onClick={() =>{ handleBlacklist(row.general.user_id)}}
               className="mobile-card-option blacklist"
             >
@@ -93,8 +88,8 @@ function MobileTable({
                 priority
               />
               <span>Blacklist</span>
-            </div>
-            <div
+            </button>
+            <button type="button"
               onClick={() => {handleActivate(row.general.user_id)}}
               className="mobile-card-option activate"
             >
@@ -106,7 +101,7 @@ function MobileTable({
                 priority
               />
               <span>Activate</span>
-            </div>
+            </button>
           </div>
         </div>
       ))}

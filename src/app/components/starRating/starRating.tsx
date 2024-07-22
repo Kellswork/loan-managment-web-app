@@ -1,7 +1,3 @@
-/* eslint-disable react/function-component-definition */
-/* eslint-disable react/no-array-index-key */
-// TODO: eslint errors 
-
 import React from "react";
 import Image from "next/image";
 import "./starRating.scss";
@@ -10,26 +6,26 @@ interface StarRatingProps {
   rating: number;
 }
 
-const StarRating: React.FC<StarRatingProps> = ({ rating }) => {
+function StarRating({ rating }: StarRatingProps) {
   const maxRating = 3;
 
   const stars = Array.from({ length: maxRating });
 
   return (
-    <div className="star-rating">
-      {stars.map((_, index) => (
+    <span className="star-rating">
+      {stars.map((_,index) => (
         <Image
           className="star-rating"
-          key={index}
+          // eslint-disable-next-line react/no-array-index-key
+          key={`star-${index}-${maxRating}`}
           src={index < rating ? "/star-filled.jpg" : "/star-unfilled.jpg"}
           alt={index < rating ? "Filled Star" : "Unfilled Star"}
           width={24}
           height={24}
-          priority
-        />
+          priority />
       ))}
-    </div>
+    </span>
   );
-};
+}
 
 export default StarRating;

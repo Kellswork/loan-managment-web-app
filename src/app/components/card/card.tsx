@@ -2,6 +2,11 @@ import React from "react";
 import Image from "next/image";
 import "./card.scss";
 
+/**
+ * Renders a card layout displaying user statistics.
+ *
+ * @returns {JSX.Element} The card layout.
+ */
  function Card() {
   return <div className="card-container">
     <div className="card-item">
